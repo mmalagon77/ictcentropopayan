@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICT Centro Popayán</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -27,68 +31,87 @@
                             800: '#1e40af',
                             900: '#1e3a8a',
                         }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
         }
     </script>
     <style>
+        html { scroll-behavior: smooth; }
+        
+        /* Utilidades para el carrusel */
         .carousel-container { overflow: hidden; position: relative; }
         .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
         .carousel-slide { min-width: 100%; flex: 0 0 100%; }
-        html { scroll-behavior: smooth; }
+        
+        /* Scrollbar personalizado */
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f8fafc; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Ocultar menú móvil suavemente */
+        #mobile-menu { transition: all 0.3s ease-in-out; }
     </style>
 </head>
 <body class="font-sans text-gray-800 antialiased bg-gray-50 flex flex-col min-h-screen">
 
     <!-- Navegación -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <!-- Mejora: Agregado backdrop-blur para un efecto cristal moderno cuando se hace scroll -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <a href="#" class="flex items-center gap-2">
-                        <div class="w-12 h-10 bg-brand-500 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="w-12 h-10 bg-gradient-to-br from-brand-500 to-brand-700 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:shadow-lg transition-all transform group-hover:-translate-y-0.5">
                             ICT
                         </div>
-                        <span class="font-bold text-xl md:text-2xl text-gray-900 tracking-tight">Centro Popayán</span>
+                        <span class="font-bold text-xl md:text-2xl text-gray-900 tracking-tight group-hover:text-brand-600 transition-colors">Centro Popayán</span>
                     </a>
                 </div>
                 
                 <!-- Menú de escritorio -->
-                <div class="hidden md:flex items-center space-x-4 lg:space-x-6">
-                    <a href="#inicio" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Inicio</a>
-                    <a href="#identidad" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Nosotros</a>
-                    <a href="#agenda" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Agenda</a>
-                    <a href="#lectura" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Lectura Bíblica</a>
-                    <a href="#galeria" class="text-gray-600 hover:text-brand-500 font-medium transition-colors hidden lg:block">Galería</a>
-                    <a href="index_e.html" class="text-brand-600 hover:text-brand-700 font-semibold transition-colors">Estudiemos</a>
-                    <a href="index_e.html" class="text-brand-600 hover:text-brand-700 font-semibold transition-colors">De Asistente a Involucrado</a>
-                    <a href="#contacto" class="bg-brand-500 text-white px-5 py-2.5 rounded-full font-medium hover:bg-brand-600 transition-all shadow-md transform hover:-translate-y-0.5 hidden xl:block">Visítanos</a>
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Inicio</a>
+                    <a href="#identidad" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Nosotros</a>
+                    <a href="#agenda" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Agenda</a>
+                    <a href="#galeria" class="text-gray-600 hover:text-brand-600 font-medium transition-colors hidden lg:block">Galería</a>
+                    
+                    <div class="h-6 w-px bg-gray-200"></div> <!-- Divisor -->
+                    
+                    <a href="index_e.html" class="text-brand-600 hover:text-brand-800 font-semibold transition-colors text-sm lg:text-base">Estudiemos</a>
+                    <a href="#contacto" class="bg-brand-500 text-white px-6 py-2.5 rounded-full font-medium hover:bg-brand-600 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hidden xl:block">
+                        Visítanos
+                    </a>
                 </div>
 
                 <!-- Botón menú móvil -->
                 <div class="flex items-center md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-500 focus:outline-none p-2">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-600 focus:outline-none p-2 bg-gray-50 rounded-lg transition-colors">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full z-40">
-            <div class="px-4 pt-2 pb-6 space-y-1 shadow-inner">
-                <a href="#inicio" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Inicio</a>
-                <a href="#identidad" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Quiénes Somos</a>
-                <a href="#agenda" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Nuestra Agenda</a>
-                <a href="#lectura" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Lectura Bíblica</a>
-                <a href="index_e.html" class="block px-3 py-3 rounded-md text-base font-semibold text-brand-600 hover:text-brand-700 hover:bg-brand-50">Estudiemos</a>
-                <a href="index_e.html" class="block px-3 py-3 rounded-md text-base font-semibold text-brand-600 hover:text-brand-700 hover:bg-brand-50">De Asistente a Involucrado</a>
-                <a href="#contacto" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50">Contacto</a>
+        <!-- Menú móvil (Dropdown) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full z-40 shadow-xl rounded-b-2xl animate-fade-in">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#inicio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-home w-6 text-center text-gray-400"></i> Inicio</a>
+                <a href="#identidad" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-users w-6 text-center text-gray-400"></i> Quiénes Somos</a>
+                <a href="#agenda" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="far fa-calendar-alt w-6 text-center text-gray-400"></i> Nuestra Agenda</a>
+                <div class="h-px w-full bg-gray-100 my-2"></div>
+                <a href="index_e.html" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-brand-600 hover:text-brand-800 hover:bg-brand-50 transition-colors"><i class="fas fa-book-reader w-6 text-center text-brand-400"></i> Estudiemos</a>
+                <a href="#contacto" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-map-marker-alt w-6 text-center text-gray-400"></i> Contacto</a>
             </div>
         </div>
     </nav>
@@ -98,98 +121,109 @@
         <section id="inicio" class="relative bg-white overflow-hidden">
             <div class="max-w-7xl mx-auto">
                 <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-16 px-4 sm:px-6 lg:px-8">
+                    <!-- Decoración de fondo sutil -->
+                    <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                        <polygon points="50,0 100,0 50,100 0,100" />
+                    </svg>
+
                     <main class="mt-10 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20">
                         <div class="sm:text-center lg:text-left">
+                            <span class="inline-block py-1 px-3 rounded-full bg-brand-50 text-brand-600 text-sm font-semibold mb-4 border border-brand-100">Sede Principal Cauca</span>
                             <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                                 <span class="block xl:inline">Bienvenidos a la familia</span>
-                                <span class="block text-brand-500 mt-2">ICT Centro Popayán</span>
+                                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-brand-700 mt-2">ICT Centro Popayán</span>
                             </h1>
-                            <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                Somos la sede en Popayán de la iglesia <a href="https://soyict.org" target="_blank" class="text-brand-500 hover:underline font-semibold">soyict.org</a>. Un lugar moderno y amigable para buscar a Dios, crecer en la fe y amar a nuestra ciudad.
+                            <p class="mt-4 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 leading-relaxed">
+                                Somos la sede en Popayán de la iglesia <a href="https://soyict.org" target="_blank" class="text-brand-600 hover:text-brand-800 hover:underline font-semibold transition-colors">soyict.org</a>. Un lugar moderno y amigable para buscar a Dios, crecer en la fe y amar a nuestra ciudad.
                             </p>
                             
                             <!-- Frase del Fundador -->
-                            <div class="mt-8 bg-brand-50 border-l-4 border-brand-500 p-5 rounded-r-lg inline-block shadow-sm">
+                            <div class="mt-8 bg-brand-50/50 border-l-4 border-brand-500 p-6 rounded-r-xl inline-block shadow-sm">
                                 <p class="text-lg md:text-xl italic text-gray-800 font-medium">"De rodillas ante Dios para estar de pie delante de los hombres"</p>
-                                <p class="text-sm text-gray-500 mt-2 font-bold uppercase tracking-wide">— Dr. Néstor Chamorro P.</p>
+                                <p class="text-sm text-gray-500 mt-3 font-bold uppercase tracking-widest flex items-center gap-2">
+                                    <span class="w-8 h-px bg-gray-400"></span>
+                                    Dr. Néstor Chamorro P.
+                                </p>
                             </div>
 
-                            <div class="mt-8 sm:flex sm:justify-center lg:justify-start gap-3">
-                                <div class="rounded-full shadow">
-                                    <a href="#agenda" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-brand-500 hover:bg-brand-600 md:py-4 md:text-lg transition-colors">
-                                        Nuestras Reuniones
-                                    </a>
-                                </div>
-                                <div class="mt-3 sm:mt-0 rounded-full shadow">
-                                    <a href="#identidad" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-brand-600 bg-brand-50 hover:bg-brand-100 md:py-4 md:text-lg transition-colors">
-                                        Conócenos
-                                    </a>
-                                </div>
+                            <div class="mt-10 sm:flex sm:justify-center lg:justify-start gap-4">
+                                <a href="#agenda" class="w-full sm:w-auto flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-full text-white bg-brand-600 hover:bg-brand-700 shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 md:text-lg">
+                                    Nuestras Reuniones
+                                </a>
+                                <a href="#identidad" class="mt-3 sm:mt-0 w-full sm:w-auto flex items-center justify-center px-8 py-3.5 border border-brand-200 text-base font-medium rounded-full text-brand-700 bg-white hover:bg-brand-50 hover:border-brand-300 shadow-sm transition-all md:text-lg">
+                                    Conócenos
+                                </a>
                             </div>
                         </div>
                     </main>
                 </div>
             </div>
-            <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 hidden lg:block bg-gray-100">
-                <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full rounded-l-3xl shadow-2xl" src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Familia unida">
+            <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 hidden lg:block bg-gray-100 relative">
+                <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full shadow-2xl" src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Familia unida compartiendo">
+                <div class="absolute inset-0 bg-gradient-to-l from-transparent to-white/20 mix-blend-overlay"></div>
             </div>
         </section>
 
         <!-- Identidad (Misión, Visión y Teoterapia) -->
-        <section id="identidad" class="py-20 bg-gray-900 text-white relative overflow-hidden">
-            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-brand-500 rounded-full opacity-10 blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-64 h-64 bg-brand-400 rounded-full opacity-10 blur-3xl"></div>
+        <section id="identidad" class="py-24 bg-gray-900 text-white relative overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-brand-600 rounded-full opacity-20 blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-brand-400 rounded-full opacity-10 blur-3xl pointer-events-none"></div>
+            
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-16">
-                    <span class="text-brand-400 font-semibold tracking-wide uppercase text-sm">Nuestra Esencia</span>
-                    <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">
+                    <span class="text-brand-400 font-bold tracking-widest uppercase text-sm">Nuestra Esencia</span>
+                    <h2 class="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl lg:text-5xl">
                         La Teoterapia al servicio del mundo
                     </h2>
-                    <p class="mt-4 max-w-3xl text-xl text-gray-300 mx-auto">
-                        La ICT (International Confederation of Theotherapy) es una organización cristiana con más de 60 años de experiencia, fundada por el Dr. Néstor Chamorro Pesantes. Nuestra misión es llevar el mensaje de Jesucristo a través de la Teoterapia (tratamiento de Dios para el hombre) a cada familia del mundo.
+                    <p class="mt-5 max-w-3xl text-lg sm:text-xl text-gray-300 mx-auto leading-relaxed">
+                        La ICT (International Confederation of Theotherapy) es una organización cristiana con más de 60 años de experiencia, fundada por el Dr. Néstor Chamorro Pesantes. Nuestra misión es llevar el mensaje de Jesucristo a través de la Teoterapia a cada familia.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     <!-- Visión y Misión -->
                     <div class="space-y-6">
-                        <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-brand-500 transition-colors shadow-lg">
+                        <div class="bg-gray-800/80 backdrop-blur-sm p-8 rounded-3xl border border-gray-700 hover:border-brand-500 transition-colors shadow-lg group">
                             <div class="flex items-center gap-4 mb-4">
-                                <div class="w-12 h-12 bg-brand-500/20 text-brand-400 rounded-lg flex items-center justify-center text-xl">
+                                <div class="w-14 h-14 bg-gray-900 text-brand-400 rounded-2xl flex items-center justify-center text-2xl shadow-inner group-hover:scale-110 transition-transform">
                                     <i class="fas fa-eye"></i>
                                 </div>
                                 <h3 class="text-2xl font-bold">Visión</h3>
                             </div>
-                            <p class="text-gray-300 text-lg">Aportar al cumplimiento de la Gran Comisión.</p>
+                            <p class="text-gray-300 text-lg leading-relaxed">Aportar al cumplimiento de la Gran Comisión.</p>
                         </div>
 
-                        <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-brand-500 transition-colors shadow-lg">
+                        <div class="bg-gray-800/80 backdrop-blur-sm p-8 rounded-3xl border border-gray-700 hover:border-brand-500 transition-colors shadow-lg group">
                             <div class="flex items-center gap-4 mb-4">
-                                <div class="w-12 h-12 bg-brand-500/20 text-brand-400 rounded-lg flex items-center justify-center text-xl">
+                                <div class="w-14 h-14 bg-gray-900 text-brand-400 rounded-2xl flex items-center justify-center text-2xl shadow-inner group-hover:scale-110 transition-transform">
                                     <i class="fas fa-bullseye"></i>
                                 </div>
                                 <h3 class="text-2xl font-bold">Misión</h3>
                             </div>
-                            <p class="text-gray-300 text-lg">Formar hombres y mujeres, capacitados como líderes, para el cumplimiento de la Gran Comisión.</p>
+                            <p class="text-gray-300 text-lg leading-relaxed">Formar hombres y mujeres, capacitados como líderes, para el cumplimiento de la Gran Comisión.</p>
                         </div>
                     </div>
 
                     <!-- La Gran Comisión -->
-                    <div class="bg-gradient-to-br from-brand-600 to-brand-900 p-8 rounded-2xl shadow-2xl flex flex-col justify-center relative overflow-hidden">
-                        <i class="fas fa-globe-americas absolute right-0 bottom-0 text-9xl text-white opacity-5 transform translate-x-4 translate-y-4"></i>
-                        <div class="text-brand-200 mb-4 relative z-10"><i class="fas fa-quote-left text-4xl"></i></div>
-                        <h3 class="text-2xl font-bold mb-4 relative z-10">La Gran Comisión</h3>
-                        <p class="text-lg md:text-xl text-white/90 leading-relaxed font-light mb-6 relative z-10 italic">
+                    <div class="bg-gradient-to-br from-brand-600 to-brand-900 p-10 rounded-3xl shadow-2xl flex flex-col justify-center relative overflow-hidden border border-brand-500/30">
+                        <i class="fas fa-globe-americas absolute -right-10 -bottom-10 text-[15rem] text-white opacity-5 transform rotate-12"></i>
+                        <div class="text-brand-300 mb-6 relative z-10"><i class="fas fa-quote-left text-5xl opacity-50"></i></div>
+                        <h3 class="text-3xl font-bold mb-6 relative z-10 text-white">La Gran Comisión</h3>
+                        <p class="text-xl text-white/90 leading-relaxed font-light mb-8 relative z-10 italic">
                             "Por tanto, id, y haced discípulos a todas las naciones, bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo; enseñándoles que guarden todas las cosas que os he mandado; y he aquí yo estoy con vosotros todos los días, hasta el fin del mundo. Amén"
                         </p>
-                        <p class="text-brand-200 font-bold relative z-10">— Mateo 28:19-20</p>
+                        <div class="flex items-center gap-4 relative z-10">
+                            <div class="h-px w-12 bg-brand-300"></div>
+                            <p class="text-brand-200 font-bold tracking-wide uppercase text-sm">Mateo 28:19-20</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Qué hacemos -->
-        <section class="py-16 bg-white border-b border-gray-100">
+        <section class="py-24 bg-white border-b border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">¿Qué hacemos?</h2>
@@ -197,41 +231,42 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="text-center p-8 bg-brand-50 rounded-3xl hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-xl border border-brand-100">
-                        <div class="w-20 h-20 bg-brand-500 text-white rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-md"><i class="fas fa-comments"></i></div>
+                    <div class="text-center p-10 bg-white rounded-3xl hover:-translate-y-2 transition-transform duration-300 shadow-lg border border-gray-100 group">
+                        <div class="w-20 h-20 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i class="fas fa-comments"></i></div>
                         <h4 class="font-bold text-2xl mb-4 text-gray-900">Asesoría</h4>
-                        <p class="text-gray-600 text-lg">Asesoría y acompañamiento espiritual individual y familiar.</p>
+                        <p class="text-gray-600 text-lg leading-relaxed">Asesoría y acompañamiento espiritual individual y familiar para superar los retos diarios.</p>
                     </div>
-                    <div class="text-center p-8 bg-brand-50 rounded-3xl hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-xl border border-brand-100">
-                        <div class="w-20 h-20 bg-brand-500 text-white rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-md"><i class="fas fa-book-open"></i></div>
+                    <div class="text-center p-10 bg-white rounded-3xl hover:-translate-y-2 transition-transform duration-300 shadow-lg border border-gray-100 group">
+                        <div class="w-20 h-20 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i class="fas fa-book-open"></i></div>
                         <h4 class="font-bold text-2xl mb-4 text-gray-900">Formación</h4>
-                        <p class="text-gray-600 text-lg">Cursos y talleres de formación en Teoterapia en grupos especializados.</p>
+                        <p class="text-gray-600 text-lg leading-relaxed">Cursos y talleres de formación en Teoterapia orientados en grupos especializados para todas las edades.</p>
                     </div>
-                    <div class="text-center p-8 bg-brand-50 rounded-3xl hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-xl border border-brand-100">
-                        <div class="w-20 h-20 bg-brand-500 text-white rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-md"><i class="fas fa-hands-helping"></i></div>
+                    <div class="text-center p-10 bg-white rounded-3xl hover:-translate-y-2 transition-transform duration-300 shadow-lg border border-gray-100 group">
+                        <div class="w-20 h-20 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i class="fas fa-hands-helping"></i></div>
                         <h4 class="font-bold text-2xl mb-4 text-gray-900">Prevención</h4>
-                        <p class="text-gray-600 text-lg">Programas de prevención y atención a problemáticas sociales.</p>
+                        <p class="text-gray-600 text-lg leading-relaxed">Programas proactivos de prevención y atención a diversas problemáticas y necesidades sociales.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Agenda Semanal -->
-        <section id="agenda" class="py-20 bg-gray-50">
+        <section id="agenda" class="py-24 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <span class="text-brand-500 font-bold tracking-wider uppercase text-sm bg-brand-100 px-4 py-1 rounded-full">Conéctate con nosotros</span>
-                    <h2 class="mt-4 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                <div class="text-center mb-16">
+                    <span class="text-brand-600 font-bold tracking-wider uppercase text-sm bg-brand-100 px-4 py-1.5 rounded-full border border-brand-200">Conéctate con nosotros</span>
+                    <h2 class="mt-6 text-3xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
                         Nuestra Agenda Semanal
                     </h2>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
                         Acompáñanos en nuestros diferentes ministerios especializados para Profesionales, Empresarios, Mujeres, Parejas, Jóvenes, Niños y Familia.
                     </p>
                 </div>
 
                 <!-- Video de la Agenda -->
-                <div class="max-w-4xl mx-auto mb-16 rounded-3xl overflow-hidden shadow-2xl bg-gray-900 border-4 border-white">
-                    <video class="w-full aspect-video object-cover" controls preload="metadata">
+                <!-- Mejora: Agregado atributo poster al video para que no se vea negro si el video no carga de inmediato -->
+                <div class="max-w-4xl mx-auto mb-20 rounded-3xl overflow-hidden shadow-2xl bg-gray-900 border-[6px] border-white relative group">
+                    <video class="w-full aspect-video object-cover" controls preload="metadata" poster="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
                         <source src="agenda.mp4" type="video/mp4">
                         Tu navegador no soporta la reproducción de videos.
                     </video>
@@ -241,205 +276,157 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     
                     <!-- Familiar y Niños -->
-                    <div class="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-green-500 hover:shadow-xl transition-shadow lg:col-span-2 relative overflow-hidden group">
-                        <div class="absolute right-0 top-0 w-32 h-32 bg-green-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-md border-t-4 border-emerald-500 hover:shadow-xl transition-all hover:-translate-y-1 relative overflow-hidden group">
+                        <div class="absolute right-0 top-0 w-32 h-32 bg-emerald-50 rounded-bl-full -z-10 group-hover:scale-125 transition-transform duration-500"></div>
                         <div class="flex justify-between items-start mb-6">
                             <div>
                                 <h3 class="text-2xl font-bold text-gray-900">Familiar y Niños</h3>
-                                <p class="text-gray-500 mt-1">Un espacio para toda la familia</p>
+                                <p class="text-gray-500 mt-1 font-medium">Un espacio para toda la familia</p>
                             </div>
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl shadow-sm">
+                            <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl shadow-sm">
                                 <i class="fas fa-home"></i>
                             </div>
                         </div>
-                        <div class="flex items-center text-gray-700 bg-gray-50 p-4 rounded-xl font-medium border border-gray-100">
-                            <i class="far fa-calendar-alt text-2xl mr-4 text-green-500"></i>
+                        <div class="flex items-center text-gray-700 bg-gray-50 p-4 rounded-xl font-medium border border-gray-100 mt-6">
+                            <i class="far fa-calendar-alt text-2xl mr-4 text-emerald-500"></i>
                             <div>
-                                <span class="block text-sm text-gray-500">Día de reunión</span>
-                                <span class="text-lg">Sábado • 5:00 P.M</span>
+                                <span class="block text-xs text-gray-400 uppercase tracking-wide font-bold mb-0.5">Día de reunión</span>
+                                <span class="text-lg text-gray-800">Sábado • 5:00 P.M</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Parejas -->
-                    <div class="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-red-500 hover:shadow-xl transition-shadow relative overflow-hidden group">
-                        <div class="absolute right-0 top-0 w-24 h-24 bg-red-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-md border-t-4 border-rose-500 hover:shadow-xl transition-all hover:-translate-y-1 relative overflow-hidden group flex flex-col">
+                        <div class="absolute right-0 top-0 w-24 h-24 bg-rose-50 rounded-bl-full -z-10 group-hover:scale-125 transition-transform duration-500"></div>
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="text-xl font-bold text-gray-900">Parejas</h3>
-                            <div class="w-10 h-10 bg-red-100 text-red-600 rounded-full flex items-center justify-center shadow-sm">
+                            <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-xl shadow-sm">
                                 <i class="fas fa-heart"></i>
                             </div>
                         </div>
                         <div class="flex items-center text-gray-700 bg-gray-50 p-4 rounded-xl font-medium border border-gray-100 mt-auto">
-                            <i class="far fa-calendar-check text-xl mr-3 text-red-500"></i>
-                            <span>Viernes • 7:00 P.M</span>
+                            <i class="far fa-calendar-check text-xl mr-4 text-rose-500"></i>
+                            <span class="text-gray-800">Viernes • 7:00 P.M</span>
                         </div>
                     </div>
 
                     <!-- Mujeres -->
-                    <div class="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-pink-400 hover:shadow-xl transition-shadow relative overflow-hidden group">
-                        <div class="absolute right-0 top-0 w-24 h-24 bg-pink-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-md border-t-4 border-fuchsia-500 hover:shadow-xl transition-all hover:-translate-y-1 relative overflow-hidden group">
+                        <div class="absolute right-0 top-0 w-24 h-24 bg-fuchsia-50 rounded-bl-full -z-10 group-hover:scale-125 transition-transform duration-500"></div>
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="text-xl font-bold text-gray-900">Mujeres</h3>
-                            <div class="w-10 h-10 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center shadow-sm">
-                                <i class="fas fa-female text-xl"></i>
+                            <div class="w-12 h-12 bg-fuchsia-100 text-fuchsia-600 rounded-2xl flex items-center justify-center text-xl shadow-sm">
+                                <i class="fas fa-female"></i>
                             </div>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center text-gray-700 bg-gray-50 p-3 rounded-xl font-medium border border-gray-100">
-                                <i class="far fa-sun text-lg mr-3 text-pink-400"></i>
-                                <span>Jueves • 9:30 A.M</span>
+                        <div class="space-y-3 mt-auto">
+                            <div class="flex items-center text-gray-700 bg-gray-50 p-3.5 rounded-xl font-medium border border-gray-100">
+                                <i class="far fa-sun text-lg mr-4 text-fuchsia-500"></i>
+                                <span class="text-gray-800">Jueves • 9:30 A.M</span>
                             </div>
-                            <div class="flex items-center text-gray-700 bg-gray-50 p-3 rounded-xl font-medium border border-gray-100">
-                                <i class="far fa-moon text-lg mr-3 text-pink-400"></i>
-                                <span>Jueves • 6:30 P.M</span>
+                            <div class="flex items-center text-gray-700 bg-gray-50 p-3.5 rounded-xl font-medium border border-gray-100">
+                                <i class="far fa-moon text-lg mr-4 text-fuchsia-500"></i>
+                                <span class="text-gray-800">Jueves • 6:30 P.M</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Profesionales -->
-                    <div class="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-brand-500 hover:shadow-xl transition-shadow relative overflow-hidden group">
-                        <div class="absolute right-0 top-0 w-24 h-24 bg-brand-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-md border-t-4 border-blue-600 hover:shadow-xl transition-all hover:-translate-y-1 relative overflow-hidden group flex flex-col">
+                        <div class="absolute right-0 top-0 w-24 h-24 bg-blue-50 rounded-bl-full -z-10 group-hover:scale-125 transition-transform duration-500"></div>
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="text-xl font-bold text-gray-900">Profesionales</h3>
-                            <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center shadow-sm">
+                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-xl shadow-sm">
                                 <i class="fas fa-briefcase"></i>
                             </div>
                         </div>
                         <div class="flex items-center text-gray-700 bg-gray-50 p-4 rounded-xl font-medium border border-gray-100 mt-auto">
-                            <i class="far fa-clock text-xl mr-3 text-brand-500"></i>
-                            <span>Miércoles • 7:00 P.M</span>
+                            <i class="far fa-clock text-xl mr-4 text-blue-600"></i>
+                            <span class="text-gray-800">Miércoles • 7:00 P.M</span>
                         </div>
                     </div>
 
                     <!-- Juventudes -->
-                    <div class="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-yellow-500 hover:shadow-xl transition-shadow relative overflow-hidden group">
-                        <div class="absolute right-0 top-0 w-24 h-24 bg-yellow-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-md border-t-4 border-amber-500 hover:shadow-xl transition-all hover:-translate-y-1 relative overflow-hidden group flex flex-col lg:col-span-2">
+                        <div class="absolute right-0 top-0 w-32 h-32 bg-amber-50 rounded-bl-full -z-10 group-hover:scale-125 transition-transform duration-500"></div>
                         <div class="flex justify-between items-start mb-6">
-                            <h3 class="text-xl font-bold text-gray-900">Juventudes</h3>
-                            <div class="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center shadow-sm">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900">Juventudes</h3>
+                                <p class="text-gray-500 mt-1 font-medium">Reuniones dinámicas para jóvenes</p>
+                            </div>
+                            <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl shadow-sm">
                                 <i class="fas fa-fire"></i>
                             </div>
                         </div>
                         <div class="flex items-center text-gray-700 bg-gray-50 p-4 rounded-xl font-medium border border-gray-100 mt-auto">
-                            <i class="far fa-calendar-alt text-xl mr-3 text-yellow-500"></i>
-                            <span>Sábados • 3:00 y 5:00 P.M</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Plan de Lectura Bíblica -->
-        <section id="lectura" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-brand-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-brand-800">
-                    <div class="p-10 lg:p-14 lg:w-2/5 text-white flex flex-col justify-center bg-brand-800 relative">
-                        <div class="absolute inset-0 bg-brand-900 opacity-80"></div>
-                        <div class="relative z-10">
-                            <span class="inline-block py-1 px-3 rounded-full bg-brand-500/30 text-brand-200 text-sm font-bold mb-4 border border-brand-400/30">Reto de 30 Días</span>
-                            <h2 class="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">Comienza tu lectura bíblica</h2>
-                            <p class="text-brand-100 text-lg mb-8">Un recorrido a través del maravilloso <strong>Evangelio de Juan</strong>. Únete a nosotros en este plan de crecimiento espiritual.</p>
-                            <div class="flex items-center">
-                                <i class="fas fa-bible text-5xl text-brand-400 mr-4"></i>
-                                <span class="text-sm text-brand-200">"Lámpara es a mis pies tu palabra, Y lumbrera a mi camino."</span>
+                            <i class="far fa-calendar-alt text-2xl mr-4 text-amber-500"></i>
+                            <div>
+                                <span class="block text-xs text-gray-400 uppercase tracking-wide font-bold mb-0.5">Dos horarios disponibles</span>
+                                <span class="text-lg text-gray-800">Sábados • 3:00 P.M y 5:00 P.M</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="p-8 lg:p-12 lg:w-3/5 bg-white">
-                        <div class="flex items-center justify-between mb-8 border-b border-gray-100 pb-4">
-                            <h3 class="text-2xl font-bold text-gray-900">Evangelio de Juan</h3>
-                            <span class="text-gray-500 text-sm font-medium"><i class="fas fa-check-circle text-brand-500 mr-1"></i> 30 Capítulos/Secciones</span>
-                        </div>
-                        
-                        <!-- Grid de Lectura (Datos del Brochure) -->
-                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
-                            <!-- Todos los días con formato de tarjeta -->
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 1</div><div class="text-sm font-semibold text-gray-800">1:1-18</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 2</div><div class="text-sm font-semibold text-gray-800">1:19-51</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 3</div><div class="text-sm font-semibold text-gray-800">3:1-21</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 4</div><div class="text-sm font-semibold text-gray-800">3:22-36</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 5</div><div class="text-sm font-semibold text-gray-800">4:1-42</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 6</div><div class="text-sm font-semibold text-gray-800">4:43-54</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 7</div><div class="text-sm font-semibold text-gray-800">5:1-47</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 8</div><div class="text-sm font-semibold text-gray-800">6:1-15</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 9</div><div class="text-sm font-semibold text-gray-800">6:22-71</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 10</div><div class="text-sm font-semibold text-gray-800">7:53-8:11</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 11</div><div class="text-sm font-semibold text-gray-800">8:12-59</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 12</div><div class="text-sm font-semibold text-gray-800">9:1-41</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 13</div><div class="text-sm font-semibold text-gray-800">10:1-21</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 14</div><div class="text-sm font-semibold text-gray-800">11:1-44</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 15</div><div class="text-sm font-semibold text-gray-800">12:12-19</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 16</div><div class="text-sm font-semibold text-gray-800">12:20-36</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 17</div><div class="text-sm font-semibold text-gray-800">13:1-20</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 18</div><div class="text-sm font-semibold text-gray-800">13:21-38</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 19</div><div class="text-sm font-semibold text-gray-800">14:1-31</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 20</div><div class="text-sm font-semibold text-gray-800">15:1-27</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 21</div><div class="text-sm font-semibold text-gray-800">16:1-33</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 22</div><div class="text-sm font-semibold text-gray-800">17:1-26</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 23</div><div class="text-sm font-semibold text-gray-800">18:1-11</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 24</div><div class="text-sm font-semibold text-gray-800">18:12-27</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 25</div><div class="text-sm font-semibold text-gray-800">18:28-19:16</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 26</div><div class="text-sm font-semibold text-gray-800">19:17-42</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 27</div><div class="text-sm font-semibold text-gray-800">20:1-18</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 28</div><div class="text-sm font-semibold text-gray-800">20:19-31</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 29</div><div class="text-sm font-semibold text-gray-800">21:1-14</div></div>
-                            <div class="bg-white border border-gray-200 rounded-xl p-3 text-center hover:bg-brand-50 hover:border-brand-300 transition-all shadow-sm group cursor-pointer"><div class="text-xs text-gray-500 group-hover:text-brand-600 font-bold mb-1">DÍA 30</div><div class="text-sm font-semibold text-gray-800">21:15-25</div></div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
 
         <!-- Carrusel de Fotos -->
-        <section id="galeria" class="py-20 bg-gray-50 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-                <span class="text-brand-500 font-bold tracking-wider uppercase text-sm bg-brand-100 px-4 py-1 rounded-full">Galería</span>
-                <h2 class="mt-4 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <section id="galeria" class="py-24 bg-gray-900 text-white overflow-hidden relative">
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center relative z-10">
+                <span class="text-brand-400 font-bold tracking-wider uppercase text-sm border border-brand-500/30 bg-brand-900/50 px-4 py-1.5 rounded-full">Galería</span>
+                <h2 class="mt-6 text-3xl leading-tight font-extrabold sm:text-4xl lg:text-5xl">
                     Nuestro Distrito en Acción
                 </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-                    Momentos especiales en ICT Centro Popayán.
+                <p class="mt-4 max-w-2xl text-xl text-gray-400 mx-auto">
+                    Momentos especiales, comunidad y crecimiento en ICT Centro Popayán.
                 </p>
             </div>
 
-            <div class="max-w-6xl mx-auto px-4 relative">
-                <!-- Controles del carrusel -->
-                <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 -ml-2 sm:-ml-6 z-10 bg-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center text-gray-800 hover:bg-brand-500 hover:text-white transition-colors focus:outline-none border border-gray-100">
-                    <i class="fas fa-chevron-left text-xl"></i>
-                </button>
-                <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 -mr-2 sm:-mr-6 z-10 bg-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center text-gray-800 hover:bg-brand-500 hover:text-white transition-colors focus:outline-none border border-gray-100">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </button>
-
+            <div class="max-w-6xl mx-auto px-4 relative z-10">
                 <!-- Pista del carrusel -->
-                <div class="carousel-container rounded-3xl shadow-2xl">
+                <div class="carousel-container rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-gray-800">
                     <div class="carousel-track" id="track">
                         <!-- Slide 1 -->
-                        <div class="carousel-slide relative h-[350px] sm:h-[500px]">
+                        <div class="carousel-slide relative h-[400px] sm:h-[550px]">
                             <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Alabanza" class="w-full h-full object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-8 pt-24">
-                                <h4 class="text-white text-2xl font-bold">Tiempos de Alabanza y Adoración</h4>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
+                                <h4 class="text-white text-3xl font-bold mb-2">Tiempos de Alabanza</h4>
+                                <p class="text-gray-300 text-lg">Adorando a Dios en comunidad.</p>
                             </div>
                         </div>
                         <!-- Slide 2 -->
-                        <div class="carousel-slide relative h-[350px] sm:h-[500px]">
+                        <div class="carousel-slide relative h-[400px] sm:h-[550px]">
                             <img src="https://images.unsplash.com/photo-1523580494112-071d311fa80b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Comunidad" class="w-full h-full object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-8 pt-24">
-                                <h4 class="text-white text-2xl font-bold">Comunión y Amistad en Cristo</h4>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
+                                <h4 class="text-white text-3xl font-bold mb-2">Comunión y Amistad</h4>
+                                <p class="text-gray-300 text-lg">Construyendo lazos eternos en Cristo.</p>
                             </div>
                         </div>
                         <!-- Slide 3 -->
-                        <div class="carousel-slide relative h-[350px] sm:h-[500px]">
+                        <div class="carousel-slide relative h-[400px] sm:h-[550px]">
                             <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Grupos" class="w-full h-full object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-8 pt-24">
-                                <h4 class="text-white text-2xl font-bold">Crecimiento Espiritual</h4>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
+                                <h4 class="text-white text-3xl font-bold mb-2">Crecimiento Espiritual</h4>
+                                <p class="text-gray-300 text-lg">Aprendiendo juntos Su palabra.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Controles sobrepuestos sutiles -->
+                <button id="prevBtn" class="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-black/30 backdrop-blur-md w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all border border-white/10 focus:outline-none">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button id="nextBtn" class="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 bg-black/30 backdrop-blur-md w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all border border-white/10 focus:outline-none">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
                 
                 <!-- Indicadores -->
                 <div class="flex justify-center mt-8 gap-3" id="indicators">
@@ -449,23 +436,23 @@
         </section>
 
         <!-- ¿Cómo lo logramos? -->
-        <section class="py-20 bg-white border-t border-gray-100">
+        <section class="py-24 bg-white">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-extrabold text-gray-900 mb-12">¿Cómo lo logramos?</h2>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="bg-gray-50 p-10 rounded-3xl border border-gray-100 hover:shadow-lg transition-shadow">
-                        <div class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-users text-3xl text-brand-600"></i>
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-16 sm:text-4xl">¿Cómo lo hacemos posible?</h2>
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                    <div class="bg-gray-50 p-10 lg:p-12 rounded-[2rem] border border-gray-100 hover:shadow-xl hover:border-brand-200 transition-all group">
+                        <div class="w-20 h-20 bg-white shadow-sm border border-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:-translate-y-2 transition-transform duration-300">
+                            <i class="fas fa-users text-4xl text-brand-500"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-gray-900">Con Compromiso</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">A través de hombres y mujeres comprometidos con llevar el mensaje de Jesucristo a cada rincón de nuestra ciudad.</p>
+                        <p class="text-gray-600 text-lg leading-relaxed">A través del esfuerzo de hombres y mujeres comprometidos con llevar el mensaje de esperanza y salvación a cada rincón de nuestra ciudad.</p>
                     </div>
-                    <div class="bg-gray-50 p-10 rounded-3xl border border-gray-100 hover:shadow-lg transition-shadow">
-                        <div class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-hand-holding-heart text-3xl text-brand-600"></i>
+                    <div class="bg-gray-50 p-10 lg:p-12 rounded-[2rem] border border-gray-100 hover:shadow-xl hover:border-brand-200 transition-all group">
+                        <div class="w-20 h-20 bg-white shadow-sm border border-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:-translate-y-2 transition-transform duration-300">
+                            <i class="fas fa-hand-holding-heart text-4xl text-brand-500"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-gray-900">Con Generosidad</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">Con donaciones de feligreses que, fruto del trato de Dios en su vida, anhelan que otras familias experimenten sanidad y restauración.</p>
+                        <p class="text-gray-600 text-lg leading-relaxed">Con las ofrendas y donaciones de nuestra congregación, quienes anhelan que más familias experimenten la sanidad y restauración que Dios ofrece.</p>
                     </div>
                 </div>
             </div>
@@ -474,71 +461,78 @@
     </main>
 
     <!-- Footer / Ubicación -->
-    <footer id="contacto" class="bg-gray-900 pt-20 pb-10 text-white">
+    <!-- Mejora: Agregado un poco más de estructura y refinado el diseño del Footer -->
+    <footer id="contacto" class="bg-gray-900 pt-20 pb-10 text-white border-t-4 border-brand-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
                 
                 <!-- Info -->
-                <div>
-                    <div class="flex items-center gap-2 mb-6">
+                <div class="lg:col-span-5">
+                    <div class="flex items-center gap-3 mb-6">
                         <div class="w-12 h-10 bg-brand-500 rounded flex items-center justify-center text-white font-bold text-lg">ICT</div>
-                        <span class="font-bold text-2xl tracking-tight">Centro Popayán</span>
+                        <span class="font-bold text-2xl tracking-tight text-white">Centro Popayán</span>
                     </div>
-                    <p class="text-gray-400 mb-6 text-lg leading-relaxed">
-                        Llevando el amor de Jesús, inspirando crecimiento espiritual y conectando familias. Somos parte de la familia <a href="https://soyict.org" target="_blank" class="text-brand-400 hover:text-brand-300 underline underline-offset-2">soyict.org</a>.
+                    <p class="text-gray-400 mb-8 text-lg leading-relaxed">
+                        Llevando el amor de Jesús, inspirando crecimiento espiritual y conectando familias. Somos parte de la gran familia <a href="https://soyict.org" target="_blank" class="text-brand-400 hover:text-white transition-colors underline underline-offset-4">soyict.org</a>.
                     </p>
-                    <div class="flex gap-4 mb-6">
-                        <span class="bg-gray-800 px-3 py-1 rounded text-sm font-bold text-gray-300 border border-gray-700">CEPC</span>
-                        <span class="bg-gray-800 px-3 py-1 rounded text-sm font-bold text-gray-300 border border-gray-700">FICT</span>
+                    <div class="flex gap-4 mb-8">
+                        <span class="bg-gray-800 px-4 py-1.5 rounded-md text-sm font-bold text-gray-300 border border-gray-700">CEPC</span>
+                        <span class="bg-gray-800 px-4 py-1.5 rounded-md text-sm font-bold text-gray-300 border border-gray-700">FICT</span>
                     </div>
-                    <div class="flex space-x-5">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors"><i class="fab fa-facebook-f text-lg"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors"><i class="fab fa-instagram text-lg"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors"><i class="fab fa-youtube text-lg"></i></a>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-all hover:-translate-y-1"><i class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-all hover:-translate-y-1"><i class="fab fa-instagram text-lg"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-all hover:-translate-y-1"><i class="fab fa-youtube text-lg"></i></a>
                     </div>
                 </div>
 
                 <!-- Enlaces rápidos -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-6 border-b border-gray-700 pb-3">Enlaces Rápidos</h3>
+                <div class="lg:col-span-3">
+                    <h3 class="text-xl font-bold mb-6 text-white flex items-center">
+                        <span class="w-8 h-1 bg-brand-500 mr-3 rounded-full"></span>
+                        Explorar
+                    </h3>
                     <ul class="space-y-4">
-                        <li><a href="#inicio" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-brand-500"></i> Inicio</a></li>
-                        <li><a href="#identidad" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-brand-500"></i> Quiénes Somos</a></li>
-                        <li><a href="#agenda" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-brand-500"></i> Nuestra Agenda</a></li>
-                        <li><a href="#lectura" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-brand-500"></i> Lectura Bíblica</a></li>
-                        <li><a href="index_e.html" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-brand-500"></i> De Asistente a Involucrado</a></li>
+                        <li><a href="#inicio" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-angle-right text-xs mr-3 text-gray-600"></i> Inicio</a></li>
+                        <li><a href="#identidad" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-angle-right text-xs mr-3 text-gray-600"></i> Quiénes Somos</a></li>
+                        <li><a href="#agenda" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-angle-right text-xs mr-3 text-gray-600"></i> Nuestra Agenda</a></li>
+                        <li><a href="index_e.html" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center font-medium"><i class="fas fa-angle-right text-xs mr-3 text-brand-600"></i> De Asistente a Involucrado</a></li>
                     </ul>
                 </div>
 
                 <!-- Contacto y Ubicación -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-6 border-b border-gray-700 pb-3">Contacto y Ubicación</h3>
-                    <ul class="space-y-5 mb-8">
-                        <li class="flex items-center">
-                            <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center mr-4 text-brand-500">
+                <div class="lg:col-span-4">
+                    <h3 class="text-xl font-bold mb-6 text-white flex items-center">
+                        <span class="w-8 h-1 bg-brand-500 mr-3 rounded-full"></span>
+                        Ubicación
+                    </h3>
+                    <ul class="space-y-6 mb-8">
+                        <li class="flex items-center p-4 bg-gray-800/50 rounded-2xl border border-gray-800">
+                            <div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mr-4 text-brand-400 shadow-inner">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <span class="text-gray-200 text-xl font-medium tracking-wide">301 368 0420</span>
                         </li>
-                        <li class="flex items-start">
-                            <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center mr-4 text-brand-500 shrink-0">
+                        <li class="flex items-start p-4 bg-gray-800/50 rounded-2xl border border-gray-800">
+                            <div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mr-4 text-brand-400 shadow-inner shrink-0 mt-1">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <span class="text-gray-300 leading-relaxed mt-1">
+                            <span class="text-gray-300 leading-relaxed">
                                 Calle 26 AN No.7c - 27<br>
                                 Portales del Norte<br>
-                                Popayán - Cauca
+                                <span class="text-brand-400 font-medium">Popayán - Cauca</span>
                             </span>
                         </li>
                     </ul>
-                    <a href="https://maps.app.goo.gl/Emd8d4oNqpnj6EdV8" target="_blank" class="inline-flex items-center justify-center w-full px-6 py-3 bg-brand-600 hover:bg-brand-500 rounded-xl text-base font-medium transition-colors shadow-lg shadow-brand-500/30">
-                        <i class="fas fa-external-link-alt mr-2"></i> Abrir en Google Maps
+                    <a href="https://maps.app.goo.gl/Emd8d4oNqpnj6EdV8" target="_blank" class="inline-flex items-center justify-center w-full px-6 py-4 bg-brand-600 hover:bg-brand-500 rounded-xl text-base font-bold transition-colors shadow-lg shadow-brand-500/20 group">
+                        <i class="fas fa-external-link-alt mr-2 group-hover:scale-110 transition-transform"></i> Abrir en Google Maps
                     </a>
                 </div>
             </div>
 
-            <!-- Mapa Integrado -->
-            <div class="w-full h-80 rounded-2xl overflow-hidden mb-10 border border-gray-800 opacity-90 hover:opacity-100 transition-opacity shadow-xl">
+            <!-- Mapa Integrado (Optimizado con lazy loading) -->
+            <div class="w-full h-[350px] rounded-3xl overflow-hidden mb-12 border-2 border-gray-800 hover:border-brand-500/50 transition-colors shadow-2xl relative">
+                <!-- Capa para click over mapa si se desea deshabilitar scroll accidental -->
                 <iframe 
                     width="100%" 
                     height="100%" 
@@ -546,31 +540,98 @@
                     scrolling="no" 
                     marginheight="0" 
                     marginwidth="0" 
+                    loading="lazy"
                     src="https://maps.google.com/maps?width=100%25&amp;height=100%25&amp;hl=es&amp;q=Calle%2026%20AN%20No.7c%20-%2027%20Portales%20del%20Norte,%20Popay%C3%A1n+(ICT%20Centro%20Popay%C3%A1n)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
                 </iframe>
             </div>
 
+            <!-- Bottom Footer -->
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                 <p>&copy; 2026 ICT Centro Popayán. Todos los derechos reservados.</p>
-                <div class="mt-4 md:mt-0 space-x-6">
-                    <a href="#" class="hover:text-white transition-colors">Política de Privacidad</a>
-                    <a href="#" class="hover:text-white transition-colors">Términos de Servicio</a>
+                <div class="mt-4 md:mt-0 space-x-6 flex items-center">
+                    <a href="#" class="hover:text-brand-400 transition-colors">Privacidad</a>
+                    <span class="w-1 h-1 bg-gray-700 rounded-full"></span>
+                    <a href="#" class="hover:text-brand-400 transition-colors">Términos</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Contenedor Flotante de WhatsApp interactivo -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        
+        <!-- Menú desplegable -->
+        <div id="wa-menu" class="hidden flex-col gap-1 mb-4 bg-white rounded-2xl shadow-2xl border border-gray-100 p-2 w-64 transform transition-all duration-300 origin-bottom-right opacity-0 scale-90">
+            <div class="px-3 py-2 border-b border-gray-100 mb-2">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">¿En qué te ayudamos?</span>
+            </div>
+            
+            <a href="https://wa.me/573054456682?text=Hola,%20me%20gustar%C3%ADa%20que%20oremos%20por..." target="_blank" class="flex items-center gap-3 px-3 py-2.5 hover:bg-[#25D366]/10 rounded-xl transition-colors text-gray-700 hover:text-[#25D366] group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#25D366] group-hover:text-white transition-all">
+                    <i class="fas fa-praying-hands"></i>
+                </div>
+                <span class="font-medium text-sm">Oremos por...</span>
+            </a>
+            
+            <a href="https://wa.me/573054456682?text=Hola,%20me%20gustar%C3%ADa%20saber%20qu%C3%A9%20d%C3%ADa%20son%20las%20reuniones" target="_blank" class="flex items-center gap-3 px-3 py-2.5 hover:bg-[#25D366]/10 rounded-xl transition-colors text-gray-700 hover:text-[#25D366] group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#25D366] group-hover:text-white transition-all">
+                    <i class="far fa-calendar-alt"></i>
+                </div>
+                <span class="font-medium text-sm">Las reuniones qué día...</span>
+            </a>
+            
+            <a href="https://wa.me/573054456682?text=Hola,%20necesito%20ayuda%20con..." target="_blank" class="flex items-center gap-3 px-3 py-2.5 hover:bg-[#25D366]/10 rounded-xl transition-colors text-gray-700 hover:text-[#25D366] group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#25D366] group-hover:text-white transition-all">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <span class="font-medium text-sm">Ayúdame con</span>
+            </a>
+            
+            <a href="https://wa.me/573054456682?text=Hola,%20necesito%20que%20hablemos" target="_blank" class="flex items-center gap-3 px-3 py-2.5 hover:bg-[#25D366]/10 rounded-xl transition-colors text-gray-700 hover:text-[#25D366] group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#25D366] group-hover:text-white transition-all">
+                    <i class="far fa-comments"></i>
+                </div>
+                <span class="font-medium text-sm">Hablemos</span>
+            </a>
+        </div>
+
+        <!-- Botón Principal -->
+        <button id="wa-btn" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg shadow-green-500/30 hover:bg-[#1ebd5a] hover:scale-110 transition-all focus:outline-none relative group" aria-label="Opciones de WhatsApp">
+            <i class="fab fa-whatsapp transition-transform duration-300" id="wa-icon"></i>
+            <!-- Tooltip -->
+            <span id="wa-tooltip" class="absolute right-16 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-sm font-semibold py-2 px-4 rounded-xl shadow-xl opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap pointer-events-none before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-right-1 before:border-4 before:border-transparent before:border-l-gray-900">
+                ¿Necesitas ayuda?
+            </span>
+        </button>
+    </div>
+
     <!-- Scripts Interactivos -->
     <script>
-        // Menú móvil
+        // --- Menú móvil con animaciones básicas ---
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
+            // Cambiar icono
+            const icon = btn.querySelector('i');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                icon.classList.replace('fa-bars', 'fa-times');
+            }
         });
 
-        // Carrusel
+        // Cerrar menú al hacer clic en un enlace
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        // --- Carrusel de Fotos ---
         const track = document.getElementById('track');
         const slides = Array.from(document.querySelectorAll('.carousel-slide'));
         const nextBtn = document.getElementById('nextBtn');
@@ -580,12 +641,20 @@
         let currentIndex = 0;
         let slideInterval;
 
-        // Crear indicadores
+        // Limpiar contenedor de indicadores antes de crearlos
+        indicatorsContainer.innerHTML = '';
+
+        // Crear indicadores dinámicamente
         slides.forEach((_, index) => {
             const dot = document.createElement('button');
             dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition-all', 'duration-300', 'focus:outline-none');
-            dot.classList.add(index === 0 ? 'bg-brand-500' : 'bg-gray-300');
-            if (index === 0) dot.classList.add('w-8'); // El primero es más ancho
+            
+            // Estado inicial
+            if (index === 0) {
+                dot.classList.add('bg-brand-500', 'w-8');
+            } else {
+                dot.classList.add('bg-gray-600', 'hover:bg-gray-400');
+            }
             
             dot.addEventListener('click', () => {
                 goToSlide(index);
@@ -597,15 +666,15 @@
         const dots = Array.from(indicatorsContainer.children);
 
         function updateCarousel() {
+            // Mover el track
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
             
+            // Actualizar dots
             dots.forEach((dot, index) => {
                 if(index === currentIndex) {
-                    dot.classList.replace('bg-gray-300', 'bg-brand-500');
-                    dot.classList.add('w-8');
+                    dot.className = 'transition-all duration-300 focus:outline-none rounded-full bg-brand-500 w-8 h-3';
                 } else {
-                    dot.classList.replace('bg-brand-500', 'bg-gray-300');
-                    dot.classList.remove('w-8');
+                    dot.className = 'transition-all duration-300 focus:outline-none rounded-full w-3 h-3 bg-gray-600 hover:bg-gray-400';
                 }
             });
         }
@@ -626,7 +695,8 @@
         }
 
         function startInterval() {
-            slideInterval = setInterval(nextSlide, 5000); // 5 segundos
+            // Cambiar slide cada 6 segundos
+            slideInterval = setInterval(nextSlide, 6000);
         }
 
         function resetInterval() {
@@ -634,26 +704,71 @@
             startInterval();
         }
 
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetInterval();
-        });
+        // Eventos de botones
+        if (nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
 
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            resetInterval();
-        });
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
+        }
 
-        // Iniciar
+        // Iniciar rotación automática
         startInterval();
-    </script>
 
-    <!-- Botón flotante de WhatsApp -->
-    <a href="https://wa.me/573054456682" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 hover:scale-110 transition-transform z-50 group" aria-label="Contáctenos por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="absolute right-16 bg-white text-gray-800 text-sm font-bold py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            Contáctenos
-        </span>
-    </a>
+        // --- Menú Flotante de WhatsApp ---
+        const waBtn = document.getElementById('wa-btn');
+        const waMenu = document.getElementById('wa-menu');
+        const waIcon = document.getElementById('wa-icon');
+        const waTooltip = document.getElementById('wa-tooltip');
+
+        waBtn.addEventListener('click', () => {
+            if (waMenu.classList.contains('hidden')) {
+                // Abrir menú
+                waMenu.classList.remove('hidden');
+                // Timeout para permitir que la animación CSS aplique tras mostrar el bloque
+                setTimeout(() => {
+                    waMenu.classList.remove('opacity-0', 'scale-90');
+                    waMenu.classList.add('opacity-100', 'scale-100');
+                }, 10);
+                
+                waIcon.classList.replace('fa-whatsapp', 'fa-times');
+                waIcon.style.transform = 'rotate(90deg)';
+                waTooltip.classList.add('hidden'); // Ocultar tooltip al abrir
+            } else {
+                // Cerrar menú
+                waMenu.classList.remove('opacity-100', 'scale-100');
+                waMenu.classList.add('opacity-0', 'scale-90');
+                
+                waIcon.classList.replace('fa-times', 'fa-whatsapp');
+                waIcon.style.transform = 'rotate(0deg)';
+                
+                setTimeout(() => {
+                    waMenu.classList.add('hidden');
+                    waTooltip.classList.remove('hidden'); // Restaurar tooltip al hover
+                }, 300);
+            }
+        });
+
+        // Cerrar menú al hacer clic fuera del contenedor
+        document.addEventListener('click', (e) => {
+            if (!waBtn.contains(e.target) && !waMenu.contains(e.target) && !waMenu.classList.contains('hidden')) {
+                waMenu.classList.remove('opacity-100', 'scale-100');
+                waMenu.classList.add('opacity-0', 'scale-90');
+                
+                waIcon.classList.replace('fa-times', 'fa-whatsapp');
+                waIcon.style.transform = 'rotate(0deg)';
+                
+                setTimeout(() => {
+                    waMenu.classList.add('hidden');
+                    waTooltip.classList.remove('hidden');
+                }, 300);
+            }
+        });
+    </script>
 </body>
 </html>
