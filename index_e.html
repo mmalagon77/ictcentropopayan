@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Pastoral | Inicio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .serif-font {
+            font-family: 'Lora', serif;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .lesson-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .icon-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- HERO SECTION -->
+    <header class="hero-bg text-white py-24 px-6 text-center relative overflow-hidden">
+        <div class="relative z-10 max-w-5xl mx-auto">
+            <!-- Badge / Etiqueta Superior -->
+            <span class="bg-blue-500/20 text-blue-100 py-2 px-5 rounded-full text-sm font-bold tracking-wide border border-blue-400/30 backdrop-blur-sm mb-8 inline-block uppercase">
+                Más que Asistir: Comprometido
+            </span>
+            
+            <!-- Título Principal -->
+            <h1 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight serif-font leading-tight">
+                Verdad que Forma,<br>Verdad que Transforma
+            </h1>
+            
+            <!-- Cita / Descripción -->
+            <div class="max-w-3xl mx-auto">
+                <p class="text-xl md:text-2xl text-slate-300 font-light leading-relaxed italic">
+                    "La enseñanza es provisión de Dios para mi vida... su enseñanza es suficiente para mí porque es alimento que marca y guía el corazón."
+                </p>
+                <div class="mt-4 flex items-center justify-center gap-2">
+                    <span class="h-px w-8 bg-blue-500/50"></span>
+                    <span class="text-blue-200 font-semibold text-base uppercase tracking-widest text-sm">Jimmy Chamorro</span>
+                    <span class="h-px w-8 bg-blue-500/50"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- VERSÍCULO DEL DÍA -->
+    <div class="bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
+            <div class="text-yellow-500">
+                <i data-lucide="sun" class="w-6 h-6"></i>
+            </div>
+            <div>
+                <p class="text-slate-600 italic serif-font text-lg">"Lámpara es a mis pies tu palabra, y lumbrera a mi camino."</p>
+                <p class="text-slate-400 text-xs font-bold mt-1 tracking-wide uppercase">Salmo 119:105</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRID DE LECCIONES -->
+    <main class="flex-grow max-w-6xl mx-auto px-6 py-12 w-full">
+        <div class="flex items-center justify-between mb-10 border-b border-slate-200 pb-4">
+            <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <i data-lucide="map" class="text-blue-600"></i>
+                Tu Ruta de Aprendizaje
+            </h2>
+            <span class="text-xs font-bold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full uppercase tracking-wider">7 Etapas Completas</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- LECCIÓN 1 -->
+            <a href="Leccion_1.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="icon-box p-3 rounded-xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="train-front" class="w-8 h-8"></i>
+                    </div>
+                    <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                </div>
+                
+                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">El Orden Correcto</h3>
+                <p class="text-slate-500 text-sm mb-4 leading-relaxed">
+                    La analogía del tren: Entendiendo el lugar de los hechos, la fe y los sentimientos.
+                </p>
+
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                </div>
+
+                <div class="flex items-center text-blue-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 1 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- LECCIÓN 2 -->
+            <a href="Leccion_2.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="icon-box p-3 rounded-xl text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);">
+                        <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+                    </div>
+                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors">Sentimientos vs Verdades</h3>
+                <p class="text-slate-500 text-sm mb-4">Descubre los 5 regalos de Dios que combaten las emociones negativas.</p>
+
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                </div>
+
+                <div class="flex items-center text-purple-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 2 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- LECCIÓN 3 -->
+            <a href="Leccion_3.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="icon-box p-3 rounded-xl text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #ffedd5 0%, #ffedd5 100%);">
+                        <i data-lucide="brick-wall" class="w-8 h-8"></i>
+                    </div>
+                    <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">Las Bases de Nuestra Vida</h3>
+                <p class="text-slate-500 text-sm mb-4">Aprendiendo a construir nuestra casa sobre la Roca, sostenida por 5 regalos.</p>
+
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                </div>
+
+                <div class="flex items-center text-orange-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 3 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- LECCIÓN 4 -->
+            <a href="Leccion_4.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="icon-box p-3 rounded-xl text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);">
+                        <i data-lucide="sun" class="w-8 h-8"></i>
+                    </div>
+                    <span class="text-xs font-bold text-sky-600 bg-sky-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Su Presencia</h3>
+                <p class="text-slate-500 text-sm mb-4">Un antídoto contra la soledad: Aprendiendo a depender de Dios.</p>
+
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                </div>
+
+                <div class="flex items-center text-sky-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 4 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+             <!-- LECCIÓN 5 -->
+             <a href="Leccion_5.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="icon-box p-3 rounded-xl text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);">
+                        <i data-lucide="wind" class="w-8 h-8"></i>
+                    </div>
+                    <span class="text-xs font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-teal-600 transition-colors">El Perdón</h3>
+                <p class="text-slate-500 text-sm mb-4">Aprende a inhalar el perdón de Dios y exhalar el pecado para experimentar sanidad.</p>
+
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                </div>
+
+                <div class="flex items-center text-teal-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 5 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+             <!-- LECCIÓN 6 -->
+             <a href="Leccion_6.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="icon-box p-3 rounded-xl text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);">
+                        <i data-lucide="shield" class="w-8 h-8"></i>
+                    </div>
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">La Paternidad</h3>
+                <p class="text-slate-500 text-sm mb-4">Renueva tu concepto y descubre en Dios la pertenencia, protección y provisión.</p>
+
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                </div>
+
+                <div class="flex items-center text-indigo-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 6 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+             <!-- LECCIÓN 7 -->
+             <a href="Leccion_7.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="icon-box p-3 rounded-xl text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+                        <i data-lucide="compass" class="w-8 h-8"></i>
+                    </div>
+                    <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-amber-600 transition-colors">Un Propósito y un Norte Claro</h3>
+                <p class="text-slate-500 text-sm mb-4">Renueva tu mente, deja atrás el pasado y pon tus sueños en manos de Dios.</p>
+
+                <div class="flex gap-2 mb-6">
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
+                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                </div>
+
+                <div class="flex items-center text-amber-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
+                    Ir a la Lección 7 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-10 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="mb-6 flex justify-center">
+                <div class="bg-slate-800 p-3 rounded-full">
+                    <i data-lucide="anchor" class="w-6 h-6 text-slate-300"></i>
+                </div>
+            </div>
+            <p class="text-sm mb-2">© 2024 Plan Pastoral. Todos los derechos reservados.</p>
+            <p class="text-xs text-slate-600">Diseñado para el crecimiento espiritual y personal.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
