@@ -66,7 +66,6 @@
 <body class="font-sans text-gray-800 antialiased bg-gray-50 flex flex-col min-h-screen">
 
     <!-- Navegación -->
-    <!-- Mejora: Agregado backdrop-blur para un efecto cristal moderno cuando se hace scroll -->
     <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
@@ -79,16 +78,12 @@
                     </a>
                 </div>
                 
-                <!-- Menú de escritorio -->
+                <!-- Menú de escritorio (Limpio) -->
                 <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
                     <a href="#inicio" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Inicio</a>
                     <a href="#identidad" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Nosotros</a>
                     <a href="#agenda" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Agenda</a>
-                    <a href="#galeria" class="text-gray-600 hover:text-brand-600 font-medium transition-colors hidden lg:block">Galería</a>
                     
-                    <div class="h-6 w-px bg-gray-200"></div> <!-- Divisor -->
-                    
-                    <a href="index_e.html" class="text-brand-600 hover:text-brand-800 font-semibold transition-colors text-sm lg:text-base">Estudiemos</a>
                     <a href="#contacto" class="bg-brand-500 text-white px-6 py-2.5 rounded-full font-medium hover:bg-brand-600 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hidden xl:block">
                         Visítanos
                     </a>
@@ -103,14 +98,12 @@
             </div>
         </div>
 
-        <!-- Menú móvil (Dropdown) -->
+        <!-- Menú móvil (Dropdown limpio) -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full z-40 shadow-xl rounded-b-2xl animate-fade-in">
             <div class="px-4 pt-4 pb-6 space-y-2">
                 <a href="#inicio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-home w-6 text-center text-gray-400"></i> Inicio</a>
                 <a href="#identidad" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-users w-6 text-center text-gray-400"></i> Quiénes Somos</a>
                 <a href="#agenda" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="far fa-calendar-alt w-6 text-center text-gray-400"></i> Nuestra Agenda</a>
-                <div class="h-px w-full bg-gray-100 my-2"></div>
-                <a href="index_e.html" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-brand-600 hover:text-brand-800 hover:bg-brand-50 transition-colors"><i class="fas fa-book-reader w-6 text-center text-brand-400"></i> Estudiemos</a>
                 <a href="#contacto" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-map-marker-alt w-6 text-center text-gray-400"></i> Contacto</a>
             </div>
         </div>
@@ -159,7 +152,7 @@
                 </div>
             </div>
             <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 hidden lg:block bg-gray-100 relative">
-                <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full shadow-2xl" src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Familia unida compartiendo">
+                <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full shadow-2xl" src="portada.png" alt="Familia unida compartiendo">
                 <div class="absolute inset-0 bg-gradient-to-l from-transparent to-white/20 mix-blend-overlay"></div>
             </div>
         </section>
@@ -264,7 +257,6 @@
                 </div>
 
                 <!-- Video de la Agenda -->
-                <!-- Mejora: Agregado atributo poster al video para que no se vea negro si el video no carga de inmediato -->
                 <div class="max-w-4xl mx-auto mb-20 rounded-3xl overflow-hidden shadow-2xl bg-gray-900 border-[6px] border-white relative group">
                     <video class="w-full aspect-video object-cover" controls preload="metadata" poster="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
                         <source src="agenda.mp4" type="video/mp4">
@@ -372,69 +364,6 @@
             </div>
         </section>
 
-        <!-- Carrusel de Fotos -->
-        <section id="galeria" class="py-24 bg-gray-900 text-white overflow-hidden relative">
-            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-            
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center relative z-10">
-                <span class="text-brand-400 font-bold tracking-wider uppercase text-sm border border-brand-500/30 bg-brand-900/50 px-4 py-1.5 rounded-full">Galería</span>
-                <h2 class="mt-6 text-3xl leading-tight font-extrabold sm:text-4xl lg:text-5xl">
-                    Nuestro Distrito en Acción
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-400 mx-auto">
-                    Momentos especiales, comunidad y crecimiento en ICT Centro Popayán.
-                </p>
-            </div>
-
-            <div class="max-w-6xl mx-auto px-4 relative z-10">
-                <!-- Pista del carrusel -->
-                <div class="carousel-container rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-gray-800">
-                    <div class="carousel-track" id="track">
-                        <!-- Slide 1 -->
-                        <div class="carousel-slide relative h-[400px] sm:h-[550px]">
-                            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Alabanza" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
-                                <h4 class="text-white text-3xl font-bold mb-2">Tiempos de Alabanza</h4>
-                                <p class="text-gray-300 text-lg">Adorando a Dios en comunidad.</p>
-                            </div>
-                        </div>
-                        <!-- Slide 2 -->
-                        <div class="carousel-slide relative h-[400px] sm:h-[550px]">
-                            <img src="https://images.unsplash.com/photo-1523580494112-071d311fa80b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Comunidad" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
-                                <h4 class="text-white text-3xl font-bold mb-2">Comunión y Amistad</h4>
-                                <p class="text-gray-300 text-lg">Construyendo lazos eternos en Cristo.</p>
-                            </div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="carousel-slide relative h-[400px] sm:h-[550px]">
-                            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Grupos" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
-                                <h4 class="text-white text-3xl font-bold mb-2">Crecimiento Espiritual</h4>
-                                <p class="text-gray-300 text-lg">Aprendiendo juntos Su palabra.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Controles sobrepuestos sutiles -->
-                <button id="prevBtn" class="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-black/30 backdrop-blur-md w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all border border-white/10 focus:outline-none">
-                    <i class="fas fa-chevron-left text-xl"></i>
-                </button>
-                <button id="nextBtn" class="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 bg-black/30 backdrop-blur-md w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all border border-white/10 focus:outline-none">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </button>
-                
-                <!-- Indicadores -->
-                <div class="flex justify-center mt-8 gap-3" id="indicators">
-                    <!-- Generados por JS -->
-                </div>
-            </div>
-        </section>
-
         <!-- ¿Cómo lo logramos? -->
         <section class="py-24 bg-white">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -461,7 +390,6 @@
     </main>
 
     <!-- Footer / Ubicación -->
-    <!-- Mejora: Agregado un poco más de estructura y refinado el diseño del Footer -->
     <footer id="contacto" class="bg-gray-900 pt-20 pb-10 text-white border-t-4 border-brand-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
@@ -486,7 +414,7 @@
                     </div>
                 </div>
 
-                <!-- Enlaces rápidos -->
+                <!-- Enlaces rápidos limpios -->
                 <div class="lg:col-span-3">
                     <h3 class="text-xl font-bold mb-6 text-white flex items-center">
                         <span class="w-8 h-1 bg-brand-500 mr-3 rounded-full"></span>
@@ -496,7 +424,6 @@
                         <li><a href="#inicio" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-angle-right text-xs mr-3 text-gray-600"></i> Inicio</a></li>
                         <li><a href="#identidad" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-angle-right text-xs mr-3 text-gray-600"></i> Quiénes Somos</a></li>
                         <li><a href="#agenda" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-angle-right text-xs mr-3 text-gray-600"></i> Nuestra Agenda</a></li>
-                        <li><a href="index_e.html" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center font-medium"><i class="fas fa-angle-right text-xs mr-3 text-brand-600"></i> De Asistente a Involucrado</a></li>
                     </ul>
                 </div>
 
@@ -631,95 +558,6 @@
             });
         });
 
-        // --- Carrusel de Fotos ---
-        const track = document.getElementById('track');
-        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        const indicatorsContainer = document.getElementById('indicators');
-        
-        let currentIndex = 0;
-        let slideInterval;
-
-        // Limpiar contenedor de indicadores antes de crearlos
-        indicatorsContainer.innerHTML = '';
-
-        // Crear indicadores dinámicamente
-        slides.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition-all', 'duration-300', 'focus:outline-none');
-            
-            // Estado inicial
-            if (index === 0) {
-                dot.classList.add('bg-brand-500', 'w-8');
-            } else {
-                dot.classList.add('bg-gray-600', 'hover:bg-gray-400');
-            }
-            
-            dot.addEventListener('click', () => {
-                goToSlide(index);
-                resetInterval();
-            });
-            indicatorsContainer.appendChild(dot);
-        });
-
-        const dots = Array.from(indicatorsContainer.children);
-
-        function updateCarousel() {
-            // Mover el track
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // Actualizar dots
-            dots.forEach((dot, index) => {
-                if(index === currentIndex) {
-                    dot.className = 'transition-all duration-300 focus:outline-none rounded-full bg-brand-500 w-8 h-3';
-                } else {
-                    dot.className = 'transition-all duration-300 focus:outline-none rounded-full w-3 h-3 bg-gray-600 hover:bg-gray-400';
-                }
-            });
-        }
-
-        function goToSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateCarousel();
-        }
-
-        function startInterval() {
-            // Cambiar slide cada 6 segundos
-            slideInterval = setInterval(nextSlide, 6000);
-        }
-
-        function resetInterval() {
-            clearInterval(slideInterval);
-            startInterval();
-        }
-
-        // Eventos de botones
-        if (nextBtn && prevBtn) {
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-                resetInterval();
-            });
-
-            prevBtn.addEventListener('click', () => {
-                prevSlide();
-                resetInterval();
-            });
-        }
-
-        // Iniciar rotación automática
-        startInterval();
-
         // --- Menú Flotante de WhatsApp ---
         const waBtn = document.getElementById('wa-btn');
         const waMenu = document.getElementById('wa-menu');
@@ -730,7 +568,6 @@
             if (waMenu.classList.contains('hidden')) {
                 // Abrir menú
                 waMenu.classList.remove('hidden');
-                // Timeout para permitir que la animación CSS aplique tras mostrar el bloque
                 setTimeout(() => {
                     waMenu.classList.remove('opacity-0', 'scale-90');
                     waMenu.classList.add('opacity-100', 'scale-100');
