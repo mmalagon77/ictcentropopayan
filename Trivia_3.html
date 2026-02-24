@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia: Las Bases de Nuestra Vida</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Iconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Comfortaa:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            /* Fondo inspirado en construcción/cimientos (piedra/tierra) */
+            background-color: #f7f3f0; 
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(217, 119, 6, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(120, 53, 15, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .option-btn {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .option-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #ffedd5; /* Naranja muy suave */
+            z-index: -1;
+            transition: width 0.3s ease;
+        }
+
+        .option-btn:hover::before {
+            width: 100%;
+        }
+
+        .option-btn:hover {
+            transform: scale(1.02);
+            border-color: #f97316; /* Naranja vibrante */
+        }
+
+        /* Animación de entrada */
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Categorías visuales */
+        .category-icon { transition: all 0.3s ease; }
+        .cat-foundation { color: #ea580c; background-color: #ffedd5; } /* Cimientos (Naranja) */
+        .cat-storm { color: #0891b2; background-color: #cffafe; } /* Tormenta (Cyan) */
+        .cat-bible { color: #4f46e5; background-color: #e0e7ff; } /* Biblia (Indigo) */
+        .cat-columns { color: #059669; background-color: #d1fae5; } /* Columnas (Verde) */
+
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 relative">
+
+    <!-- Botón Volver -->
+    <!-- Nota: Apunta a index.html porque aún no hemos creado leccion3.html -->
+    <a href="index.html" class="absolute top-4 left-4 z-20 flex items-center gap-2 text-slate-500 hover:text-orange-600 font-bold bg-white/80 backdrop-blur px-4 py-2 rounded-xl shadow-sm transition-colors border border-slate-200">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i> Salir
+    </a>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="w-full max-w-2xl relative z-10 mt-12 md:mt-0">
+        
+        <!-- PANTALLA DE INICIO -->
+        <div id="start-screen" class="game-card p-10 text-center fade-in">
+            <div class="mb-8 flex justify-center gap-4">
+                <div class="animate-bounce delay-100 bg-orange-100 p-4 rounded-2xl shadow-sm transform -rotate-6">
+                    <i data-lucide="brick-wall" class="w-12 h-12 text-orange-600"></i>
+                </div>
+                <div class="animate-bounce delay-200 bg-stone-100 p-4 rounded-2xl shadow-sm transform rotate-6">
+                    <i data-lucide="home" class="w-12 h-12 text-stone-600"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-3 tracking-tight">Las Bases de Nuestra Vida</h1>
+            <p class="text-slate-500 mb-10 text-lg">Lección 3: Construyendo sobre la Roca.</p>
+            
+            <div class="space-y-6 max-w-sm mx-auto">
+                <div class="text-left group">
+                    <label class="block text-sm font-bold text-slate-600 mb-2 ml-1 group-focus-within:text-orange-600 transition-colors">¿Cómo te llamas?</label>
+                    <div class="relative">
+                        <i data-lucide="user" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5"></i>
+                        <input type="text" id="username" placeholder="Tu nombre..." class="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-orange-500 focus:ring-4 focus:ring-orange-100 focus:outline-none text-lg transition-all shadow-sm">
+                    </div>
+                </div>
+                <button onclick="startGame()" class="w-full bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-orange-200 transform transition active:scale-95 text-xl flex items-center justify-center gap-2">
+                    <span>Comenzar Trivia</span>
+                    <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE JUEGO -->
+        <div id="game-screen" class="hidden">
+            <!-- Header Flotante -->
+            <div class="flex items-center justify-between mb-6 px-2">
+                <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm text-slate-700 font-bold border border-white/50">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-orange-500"></i>
+                    <span id="current-q-num">1</span><span class="text-slate-400 font-normal">/10</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm text-slate-700 font-bold border border-white/50">
+                    <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
+                    <span id="score-display">0</span>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Pregunta -->
+            <div class="game-card p-6 md:p-8 relative overflow-hidden">
+                <!-- Barra de progreso superior -->
+                <div class="absolute top-0 left-0 h-1.5 bg-slate-100 w-full">
+                    <div id="progress-bar" class="h-full bg-orange-500 transition-all duration-500" style="width: 0%"></div>
+                </div>
+                
+                <div id="question-container" class="fade-in mt-2">
+                    <!-- Icono de Categoría Dinámico -->
+                    <div class="flex justify-center mb-6">
+                        <div id="q-icon-wrapper" class="p-5 rounded-full shadow-inner category-icon">
+                            <i id="q-icon" data-lucide="help-circle" class="w-10 h-10"></i>
+                        </div>
+                    </div>
+
+                    <h2 id="question-text" class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-8 leading-snug">
+                        ¿Pregunta?
+                    </h2>
+
+                    <!-- Opciones -->
+                    <div id="options-container" class="grid grid-cols-1 gap-3 mb-6">
+                        <!-- Se llenan con JS -->
+                    </div>
+
+                    <!-- Botón de Ayuda (Footer) -->
+                    <div class="flex justify-center border-t border-slate-100 pt-4">
+                        <button onclick="toggleHint()" id="hint-btn" class="text-sm flex items-center gap-2 text-slate-500 hover:text-orange-600 transition-colors font-semibold group">
+                            <div class="bg-slate-100 group-hover:bg-orange-100 p-2 rounded-full transition-colors">
+                                <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                            </div>
+                            <span id="hint-label">Necesito una pista</span>
+                        </button>
+                    </div>
+                    
+                    <div id="hint-text" class="hidden mt-4 p-4 bg-yellow-50 text-yellow-800 text-center rounded-xl border border-yellow-100 text-sm animate-pulse">
+                        Aquí aparecerá la pista...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE RESULTADOS -->
+        <div id="result-screen" class="hidden game-card p-8 text-center fade-in max-h-[90vh] overflow-y-auto">
+            <div class="mb-6 flex justify-center">
+                <div id="result-icon-container" class="p-6 rounded-full shadow-inner bg-white">
+                    <!-- Icono dinámico -->
+                </div>
+            </div>
+            
+            <h2 class="text-3xl font-bold text-slate-800 brand-font mb-2">Resultado Final</h2>
+            <p id="result-greeting" class="text-xl text-slate-500 mb-8">Hola, Nombre</p>
+            
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100">
+                    <div class="text-xs text-orange-600 font-bold uppercase mb-1">Aciertos</div>
+                    <div id="final-score" class="text-4xl font-black text-slate-800">0</div>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                    <div class="text-xs text-blue-600 font-bold uppercase mb-1">Meta</div>
+                    <div class="text-4xl font-black text-slate-400">7<span class="text-xl">/10</span></div>
+                </div>
+            </div>
+
+            <div id="final-message-box" class="p-4 rounded-2xl mb-8">
+                <p id="final-message" class="text-lg font-medium leading-relaxed">Mensaje</p>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <button onclick="location.reload()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-4 rounded-xl shadow-lg transform transition hover:-translate-y-1 text-lg flex items-center justify-center gap-3">
+                    <i data-lucide="rotate-ccw" class="w-5 h-5"></i> 
+                    Volver a Jugar
+                </button>
+                <a href="index.html" class="w-full bg-white border border-slate-200 text-slate-600 font-bold py-4 rounded-xl hover:bg-slate-50 text-lg flex items-center justify-center gap-2">
+                    <i data-lucide="layout-grid" class="w-5 h-5"></i> Ir al Menú
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODAL DE FEEDBACK -->
+    <div id="feedback-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden flex items-end sm:items-center justify-center z-50 p-4 sm:p-6 transition-opacity">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl transform scale-100 transition-all">
+            <div class="text-center mb-6">
+                <div id="modal-icon" class="mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-sm">
+                    <!-- Icono -->
+                </div>
+                <h3 id="modal-title" class="text-3xl font-bold mb-2 brand-font">¡Correcto!</h3>
+                <p id="modal-message" class="text-slate-600 leading-relaxed">Explicación breve.</p>
+            </div>
+            
+            <div id="correct-answer-box" class="hidden bg-red-50 p-4 rounded-2xl border border-red-100 mb-6 text-left relative overflow-hidden">
+                <span class="text-xs font-bold text-red-500 uppercase tracking-wider block mb-1">La respuesta correcta era:</span>
+                <p id="correct-answer-text" class="text-slate-800 font-bold text-lg leading-tight">Texto respuesta</p>
+            </div>
+
+            <button onclick="nextQuestion()" class="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl hover:bg-slate-800 transition active:scale-95 shadow-lg flex justify-center items-center gap-2">
+                <span>Continuar</span>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // --- BANCO DE PREGUNTAS (20 Total - Basado en PDF 3) ---
+        // Categories: 'foundation' (Roca/Cimiento), 'storm' (Lluvia/Viento), 'bible' (Libro), 'columns' (Las 5 Columnas)
+        const allQuestions = [
+            {
+                q: "¿Con qué compara Jesús nuestra vida en Mateo 7?",
+                options: ["Con un barco en el mar", "Con una casa", "Con un árbol frondoso", "Con un camino largo"],
+                correct: 1,
+                hint: "Es una construcción donde habitamos.",
+                category: "foundation",
+                icon: "home"
+            },
+            {
+                q: "¿Quién es el hombre prudente según el texto?",
+                options: ["El que oye y no hace nada", "El que construye rápido", "El que oye estas palabras y las hace", "El que sabe mucha teología"],
+                correct: 2,
+                hint: "Implica dos acciones: escuchar y actuar.",
+                category: "bible",
+                icon: "user-check"
+            },
+            {
+                q: "¿Sobre qué edificó su casa el hombre prudente?",
+                options: ["Sobre la arena", "Sobre la roca", "Sobre el pasto", "Sobre madera"],
+                correct: 1,
+                hint: "Un fundamento sólido y firme.",
+                category: "foundation",
+                icon: "mountain"
+            },
+            {
+                q: "¿Qué representa el hombre insensato?",
+                options: ["El que oye las palabras pero NO las hace", "El que no oye nada", "El que construye sin ventanas", "El que vive en alquiler"],
+                correct: 0,
+                hint: "Escucha el mensaje pero no lo pone en práctica.",
+                category: "bible",
+                icon: "user-x"
+            },
+            {
+                q: "¿Qué sucede con la casa sobre la arena cuando viene la tormenta?",
+                options: ["Se mantiene firme", "Se moja un poco", "Cae y es grande su ruina", "Se hace más fuerte"],
+                correct: 2,
+                hint: "Al no tener base firme, no soporta la presión.",
+                category: "storm",
+                icon: "cloud-lightning"
+            },
+            {
+                q: "¿Qué representan la lluvia, los ríos y los vientos?",
+                options: ["Bendiciones económicas", "Momentos difíciles o circunstancias adversas", "Un día de campo", "El bautismo"],
+                correct: 1,
+                hint: "Son situaciones que intentan movernos o hacernos desfallecer.",
+                category: "storm",
+                icon: "wind"
+            },
+            {
+                q: "Según 1 Corintios 3:11, ¿cuál es el único fundamento puesto?",
+                options: ["La iglesia", "Nuestras buenas obras", "Jesucristo", "El dinero"],
+                correct: 2,
+                hint: "Nadie puede poner otro fundamento que el que ya está.",
+                category: "bible",
+                icon: "book-open"
+            },
+            {
+                q: "¿De qué sirven las columnas fuertes si no hay fundamento?",
+                options: ["De mucho, sostienen el techo", "De nada, la casa caerá", "Sirven de adorno", "Para vender la casa"],
+                correct: 1,
+                hint: "La base es lo que sostiene todo lo demás.",
+                category: "foundation",
+                icon: "alert-triangle"
+            },
+            {
+                q: "La vida cristiana NO significa que no habrá momentos difíciles, sino...",
+                options: ["...que nuestra base es Cristo para resistirlos", "...que todo será fácil", "...que nunca lloraremos", "...que no tendremos problemas"],
+                correct: 0,
+                hint: "La diferencia no es la ausencia de tormenta, sino la resistencia de la casa.",
+                category: "foundation",
+                icon: "shield-check"
+            },
+            {
+                q: "¿Cuál de estos NO es uno de los 5 regalos (columnas) mencionados?",
+                options: ["Presencia", "Dinero", "Paternidad", "Propósito"],
+                correct: 1,
+                hint: "Los regalos son espirituales, no materiales.",
+                category: "columns",
+                icon: "x-circle"
+            },
+            {
+                q: "¿Qué regalo nos asegura que Dios jamás nos dejará solos?",
+                options: ["Perdón", "Presencia", "Propósito", "Vida Eterna"],
+                correct: 1,
+                hint: "Es Él entrando a nuestro corazón para estar con nosotros.",
+                category: "columns",
+                icon: "heart-handshake"
+            },
+            {
+                q: "¿Qué regalo soluciona nuestras equivocaciones pasadas, presentes y futuras?",
+                options: ["El Perdón", "La Fama", "La Inteligencia", "La Salud"],
+                correct: 0,
+                hint: "Limpia nuestra cuenta con Dios.",
+                category: "columns",
+                icon: "eraser"
+            },
+            {
+                q: "¿Qué regalo restaura nuestra relación con Dios como Padre?",
+                options: ["Paternidad", "Amistad", "Vecindad", "Sociedad"],
+                correct: 0,
+                hint: "Nos hace hijos, no solo criaturas.",
+                category: "columns",
+                icon: "baby"
+            },
+            {
+                q: "¿Qué regalo combate la falta de realización o sentido?",
+                options: ["Vida Eterna", "Propósito", "Perdón", "Presencia"],
+                correct: 1,
+                hint: "Saber para qué fuimos creados y administrar nuestra vida.",
+                category: "columns",
+                icon: "compass"
+            },
+            {
+                q: "¿Qué regalo nos da esperanza después de la muerte?",
+                options: ["Paternidad", "Presencia", "Vida Eterna", "Perdón"],
+                correct: 2,
+                hint: "Nuestra seguridad trasciende esta vida terrenal.",
+                category: "columns",
+                icon: "infinity"
+            },
+            {
+                q: "¿En quién debemos poner nuestra mirada según la lección?",
+                options: ["En los problemas", "En nosotros mismos", "En Cristo", "En las noticias"],
+                correct: 2,
+                hint: "Él es la razón de nuestra fe y autor de los regalos.",
+                category: "foundation",
+                icon: "eye"
+            },
+            {
+                q: "¿Qué tarea práctica se deja al final de la cita?",
+                options: ["Construir una casa real", "Cambiar 5 sentimientos negativos por acciones/decisiones", "Leer todo Mateo", "No hacer nada"],
+                correct: 1,
+                hint: "Buscar un versículo y tomar una decisión contraria a la emoción.",
+                category: "bible",
+                icon: "clipboard-list"
+            },
+            {
+                q: "¿Qué representan las columnas en la gráfica del templo?",
+                options: ["Los 5 regalos/principios de nuestra vida", "Los 5 continentes", "Los 5 sentidos", "Los 5 libros de Moisés"],
+                correct: 0,
+                hint: "Son los pilares que, sobre Cristo, sostienen nuestra vida.",
+                category: "columns",
+                icon: "columns"
+            },
+            {
+                q: "Si escucho la palabra pero sigo guiándome por mis emociones, soy como...",
+                options: "...el hombre prudente", "...el hombre insensato", "...el arquitecto experto", "...el dueño del banco"],
+                correct: 1,
+                hint: "Construyo sobre la arena movediza de los sentimientos.",
+                category: "bible",
+                icon: "help-circle"
+            },
+            {
+                q: "¿Quién es el autor de los 5 regalos en nuestra vida?",
+                options: ["El Pastor", "El Gobierno", "Jesucristo", "Nuestros padres"],
+                correct: 2,
+                hint: "El fundamento mismo es quien nos da las columnas.",
+                category: "foundation",
+                icon: "crown"
+            }
+        ];
+
+        // --- ESTADO DEL JUEGO ---
+        let gameQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userName = "";
+
+        // --- FUNCIONES ---
+
+        // Inicializar iconos
+        lucide.createIcons();
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startGame() {
+            const nameInput = document.getElementById('username');
+            if (!nameInput.value.trim()) {
+                // Shake effect on input
+                nameInput.classList.add('ring-4', 'ring-red-200', 'border-red-500');
+                setTimeout(() => nameInput.classList.remove('ring-4', 'ring-red-200', 'border-red-500'), 500);
+                return;
+            }
+            userName = nameInput.value;
+            
+            // Seleccionar 10 preguntas aleatorias
+            const shuffled = shuffleArray([...allQuestions]);
+            gameQuestions = shuffled.slice(0, 10);
+            
+            currentQuestionIndex = 0;
+            score = 0;
+            
+            // Actualizar UI
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+            updateScore();
+            
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const qData = gameQuestions[currentQuestionIndex];
+            
+            // Actualizar barra de progreso
+            const progressPct = ((currentQuestionIndex) / 10) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPct}%`;
+
+            // Actualizar textos
+            document.getElementById('current-q-num').textContent = currentQuestionIndex + 1;
+            document.getElementById('question-text').textContent = qData.q;
+            
+            // Actualizar Icono Dinámico
+            const iconWrapper = document.getElementById('q-icon-wrapper');
+            const iconEl = document.getElementById('q-icon');
+            
+            // Reset classes
+            iconWrapper.className = 'p-5 rounded-full shadow-inner category-icon mb-2 transform transition-all duration-500 hover:scale-110';
+            
+            // Apply category styles
+            if (qData.category === 'foundation') iconWrapper.classList.add('cat-foundation');
+            else if (qData.category === 'storm') iconWrapper.classList.add('cat-storm');
+            else if (qData.category === 'bible') iconWrapper.classList.add('cat-bible');
+            else iconWrapper.classList.add('cat-columns');
+            
+            // Set icon attribute and refresh
+            iconEl.setAttribute('data-lucide', qData.icon || 'help-circle');
+            lucide.createIcons();
+
+            // Resetear Pista
+            const hintBox = document.getElementById('hint-text');
+            const hintBtn = document.getElementById('hint-btn');
+            const hintLabel = document.getElementById('hint-label');
+            
+            hintBox.classList.add('hidden');
+            hintBox.textContent = qData.hint;
+            hintLabel.textContent = "Necesito una pista";
+            hintBtn.classList.remove('text-slate-500');
+            hintBtn.classList.add('text-slate-500');
+            
+            // Generar Opciones
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn w-full text-left bg-white border border-slate-200 text-slate-700 font-bold py-4 px-6 rounded-2xl shadow-sm hover:shadow-md flex items-center group";
+                
+                const letterBox = document.createElement('span');
+                letterBox.className = "flex-shrink-0 w-8 h-8 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center mr-4 text-sm font-black group-hover:bg-orange-100 group-hover:text-orange-600 transition-colors";
+                letterBox.textContent = String.fromCharCode(65 + index);
+                
+                btn.appendChild(letterBox);
+                btn.appendChild(document.createTextNode(opt));
+                
+                btn.onclick = () => checkAnswer(index, qData.correct, qData.options[qData.correct]);
+                optionsContainer.appendChild(btn);
+            });
+
+            // Animación suave
+            const container = document.getElementById('question-container');
+            container.classList.remove('fade-in');
+            void container.offsetWidth; 
+            container.classList.add('fade-in');
+        }
+
+        function toggleHint() {
+            const hintBox = document.getElementById('hint-text');
+            const hintLabel = document.getElementById('hint-label');
+            const hintBtn = document.getElementById('hint-btn');
+
+            if (hintBox.classList.contains('hidden')) {
+                hintBox.classList.remove('hidden');
+                hintLabel.textContent = "Ocultar Pista";
+                hintBtn.classList.add('text-orange-600');
+                hintBtn.classList.remove('text-slate-500');
+            } else {
+                hintBox.classList.add('hidden');
+                hintLabel.textContent = "Necesito una pista";
+                hintBtn.classList.remove('text-orange-600');
+                hintBtn.classList.add('text-slate-500');
+            }
+        }
+
+        function checkAnswer(selectedIndex, correctIndex, correctText) {
+            const isCorrect = selectedIndex === correctIndex;
+            
+            if (isCorrect) {
+                score++;
+                updateScore();
+                showModal(true, null);
+            } else {
+                showModal(false, correctText);
+            }
+        }
+
+        function showModal(isCorrect, correctText) {
+            const modal = document.getElementById('feedback-modal');
+            const iconContainer = document.getElementById('modal-icon');
+            const title = document.getElementById('modal-title');
+            const message = document.getElementById('modal-message');
+            const correctBox = document.getElementById('correct-answer-box');
+            const correctTextElem = document.getElementById('correct-answer-text');
+
+            modal.classList.remove('hidden');
+            // Trigger animation
+            setTimeout(() => {
+                modal.firstElementChild.classList.remove('scale-95', 'opacity-0');
+                modal.firstElementChild.classList.add('scale-100', 'opacity-100');
+            }, 10);
+
+            if (isCorrect) {
+                // Green / Success Style
+                iconContainer.className = "mx-auto w-24 h-24 rounded-full flex items-center justify-center mb-4 bg-green-100 text-green-500 animate-bounce";
+                iconContainer.innerHTML = '<i data-lucide="check" class="w-12 h-12"></i>';
+                title.textContent = "¡Es Correcto!";
+                title.className = "text-3xl font-bold mb-2 brand-font text-green-600";
+                message.textContent = "¡Estás construyendo sobre la Roca!";
+                correctBox.classList.add('hidden');
+            } else {
+                // Red / Error Style
+                iconContainer.className = "mx-auto w-24 h-24 rounded-full flex items-center justify-center mb-4 bg-red-100 text-red-500";
+                iconContainer.innerHTML = '<i data-lucide="x" class="w-12 h-12"></i>';
+                title.textContent = "Incorrecto";
+                title.className = "text-3xl font-bold mb-2 brand-font text-red-600";
+                message.textContent = "Esa no era la respuesta correcta.";
+                
+                correctTextElem.textContent = correctText;
+                correctBox.classList.remove('hidden');
+            }
+            lucide.createIcons();
+        }
+
+        function nextQuestion() {
+            const modal = document.getElementById('feedback-modal');
+            modal.classList.add('hidden');
+            
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < 10) {
+                loadQuestion();
+            } else {
+                finishGame();
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('score-display').textContent = score;
+        }
+
+        function finishGame() {
+            document.getElementById('game-screen').classList.add('hidden');
+            const resultScreen = document.getElementById('result-screen');
+            resultScreen.classList.remove('hidden');
+            
+            document.getElementById('result-greeting').textContent = `¡Gran trabajo, ${userName}!`;
+            document.getElementById('final-score').textContent = score;
+            
+            const messageEl = document.getElementById('final-message');
+            const messageBox = document.getElementById('final-message-box');
+            const iconContainer = document.getElementById('result-icon-container');
+
+            if (score >= 7) {
+                messageEl.textContent = "¡Excelente! Has demostrado que tu casa está bien cimentada sobre la Roca (Cristo).";
+                messageBox.className = "bg-green-100 text-green-800 p-6 rounded-2xl mb-8 border border-green-200";
+                iconContainer.className = "p-6 rounded-full bg-yellow-100 text-yellow-600 mb-4 inline-block";
+                iconContainer.innerHTML = '<i data-lucide="trophy" class="w-20 h-20"></i>';
+            } else {
+                messageEl.textContent = "Ten cuidado, parece que hay algo de arena en los cimientos. Repasa la lección y fortalece tu base.";
+                messageBox.className = "bg-slate-100 text-slate-700 p-6 rounded-2xl mb-8 border border-slate-200";
+                iconContainer.className = "p-6 rounded-full bg-slate-200 text-slate-500 mb-4 inline-block";
+                iconContainer.innerHTML = '<i data-lucide="book-open" class="w-20 h-20"></i>';
+            }
+            lucide.createIcons();
+        }
+
+    </script>
+</body>
+</html>

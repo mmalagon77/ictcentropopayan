@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 2 | Sentimientos vs Verdades</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .serif-font {
+            font-family: 'Lora', serif;
+        }
+
+        .header-bg {
+            background-image: linear-gradient(to right, rgba(88, 28, 135, 0.9), rgba(124, 58, 237, 0.8)), url('https://images.unsplash.com/photo-1518531933037-9a61605981e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .resource-card {
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- NAVEGACIÓN -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center text-slate-600 hover:text-purple-600 font-semibold transition-colors group">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform"></i>
+                <span class="hidden sm:inline">Volver al Inicio</span>
+                <span class="sm:hidden">Inicio</span>
+            </a>
+            <span class="text-xs font-bold bg-purple-100 text-purple-600 px-3 py-1 rounded-full uppercase tracking-wider">Lección 02</span>
+        </div>
+    </nav>
+
+    <!-- ENCABEZADO -->
+    <header class="header-bg text-white py-16 px-6 text-center">
+        <div class="max-w-3xl mx-auto">
+            <div class="mb-4 inline-flex items-center justify-center bg-purple-500/30 border border-purple-400/30 rounded-full p-3">
+                <i data-lucide="heart-handshake" class="w-8 h-8 text-purple-200"></i>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 serif-font">Sentimientos vs Verdades</h1>
+            <p class="text-lg text-slate-200 font-light leading-relaxed">
+                Descubre cómo los 5 regalos de Dios (Presencia, Perdón, Paternidad, Propósito y Vida Eterna) transforman nuestras emociones y sanan nuestra vida.
+            </p>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-grow max-w-5xl mx-auto px-4 py-12 w-full space-y-12">
+
+        <!-- SECCIÓN 1: VIDEO -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-6 border-b border-slate-100 flex items-center gap-3">
+                <div class="bg-red-100 p-2 rounded-lg text-red-600">
+                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-800">Ver Enseñanza: Sentimientos vs Verdades</h2>
+            </div>
+            
+            <!-- Embed de YouTube -->
+            <div class="aspect-video bg-black">
+                <iframe 
+                    class="w-full h-full" 
+                    src="https://www.youtube.com/embed/w2FhTLP7Hx8" 
+                    title="Sentimientos vs Verdades" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="p-4 bg-slate-50 text-sm text-slate-500 flex justify-between items-center">
+                <span><i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Duración aprox: 5:00 min</span>
+                <span class="flex items-center gap-1 text-green-600 font-semibold"><i data-lucide="check-circle-2" class="w-4 h-4"></i> Disponible HD</span>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: RECURSOS (Podcast y PDF) -->
+        <div class="grid md:grid-cols-2 gap-6">
+            
+            <!-- PODCAST SPOTIFY -->
+            <div class="resource-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="bg-green-100 p-3 rounded-xl text-green-600">
+                        <i data-lucide="headphones" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-400 uppercase">Podcast</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Podcast de la Lección</h3>
+                <p class="text-slate-500 text-sm mb-6 flex-grow">
+                    Escucha cómo aplicar estas verdades en tu día a día mientras realizas tus actividades.
+                </p>
+                
+                <!-- Botón Spotify con enlace actualizado -->
+                <a href="https://open.spotify.com/episode/1WcmC3p5mtgqjSAU6ZXig9?si=Z9DarLCdS-mLweEepoLW-Q" target="_blank" class="w-full mt-auto flex items-center justify-center gap-2 bg-[#1DB954] text-white font-bold py-3 rounded-xl hover:bg-[#1ed760] transition-colors shadow-lg shadow-green-200">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> Escuchar en Spotify
+                </a>
+            </div>
+
+            <!-- PRESENTACIÓN -->
+            <div class="resource-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="bg-orange-100 p-3 rounded-xl text-orange-600">
+                        <i data-lucide="presentation" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-400 uppercase">Diapositivas</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Material Visual (PDF)</h3>
+                <p class="text-slate-500 text-sm mb-6 flex-grow">
+                    Descarga o visualiza la guía con los 5 sentimientos negativos y los 5 regalos opuestos.
+                </p>
+                
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4 flex items-center gap-3">
+                    <div class="bg-white p-2 rounded shadow-sm">
+                        <i data-lucide="file-text" class="text-red-500 w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-slate-700">Presentación Lección 2</div>
+                        <div class="text-xs text-slate-400">PPC_Presentacion_Leccion_2.pdf</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-3 mt-auto">
+                    <!-- Enlace al PDF (Abre en pestaña nueva) -->
+                    <a href="PPC_Presentacion_Leccion_2.pdf" target="_blank" class="flex items-center justify-center gap-2 bg-slate-800 text-white font-semibold py-3 rounded-xl hover:bg-slate-700 transition-colors text-sm">
+                        <i data-lucide="eye" class="w-4 h-4"></i> Ver Presentación
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: ACTIVIDAD (TRIVIA) -->
+        <section class="relative overflow-hidden bg-gradient-to-br from-purple-600 to-indigo-800 rounded-3xl p-8 md:p-12 text-white text-center shadow-xl">
+            <!-- Patrón de fondo -->
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+            
+            <div class="relative z-10 max-w-2xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm inline-block p-3 rounded-full mb-6">
+                    <i data-lucide="brain-circuit" class="w-8 h-8 text-purple-200"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 serif-font">¿Listo para validar tu aprendizaje?</h2>
+                <p class="text-purple-100 mb-8 text-lg leading-relaxed">
+                    Pon a prueba lo que acabas de ver en el video y completa la trivia de 20 preguntas. Recuerda: ¡Necesitas 7 aciertos para aprobar!
+                </p>
+                
+                <!-- BOTÓN PRINCIPAL A LA TRIVIA -->
+                <a href="Trivia_2.html" class="group inline-flex items-center justify-center gap-3 bg-white text-purple-700 font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-purple-50 transform transition-all hover:-translate-y-1 hover:shadow-2xl text-lg">
+                    <span>Iniciar Trivia Lección 2</span>
+                    <i data-lucide="arrow-right-circle" class="w-6 h-6 group-hover:text-purple-500 transition-colors"></i>
+                </a>
+                <p class="mt-4 text-xs text-purple-200 opacity-70">Tiempo estimado: 5 minutos</p>
+            </div>
+        </section>
+
+        <!-- BOTÓN DE REGRESO AL MENÚ -->
+        <div class="flex justify-center mt-4">
+            <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-slate-800 font-semibold py-3 px-6 rounded-xl hover:bg-slate-100 transition-colors">
+                <i data-lucide="grid" class="w-5 h-5"></i>
+                Regresar al Menú Principal
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-10 text-center mt-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="mb-6">
+                <i data-lucide="anchor" class="w-8 h-8 mx-auto text-slate-600 mb-2"></i>
+                <h4 class="text-slate-500 font-serif tracking-widest text-sm uppercase">Plan Pastoral</h4>
+            </div>
+            <p class="text-sm text-slate-600">&copy; 2024 Creciendo en la Verdad. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia: La Paternidad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Iconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Comfortaa:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            /* Fondo inspirado en Seguridad y Realeza/Paternidad (Índigo y Violeta suave) */
+            background-color: #eef2ff; 
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(124, 58, 237, 0.1) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.1), 0 10px 10px -5px rgba(79, 70, 229, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .option-btn {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .option-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #e0e7ff; /* Índigo muy suave */
+            z-index: -1;
+            transition: width 0.3s ease;
+        }
+
+        .option-btn:hover::before {
+            width: 100%;
+        }
+
+        .option-btn:hover {
+            transform: scale(1.02);
+            border-color: #4f46e5; /* Índigo vibrante */
+        }
+
+        /* Animación de entrada */
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Categorías visuales */
+        .category-icon { transition: all 0.3s ease; }
+        .cat-father { color: #4338ca; background-color: #e0e7ff; } /* Padre/Dios (Indigo) */
+        .cat-belonging { color: #6d28d9; background-color: #ede9fe; } /* Pertenencia (Violet) */
+        .cat-protection { color: #0369a1; background-color: #e0f2fe; } /* Protección (Sky) */
+        .cat-provision { color: #047857; background-color: #d1fae5; } /* Provisión (Emerald) */
+
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 relative">
+
+    <!-- Botón Volver -->
+    <a href="index.html" class="absolute top-4 left-4 z-20 flex items-center gap-2 text-slate-500 hover:text-indigo-600 font-bold bg-white/80 backdrop-blur px-4 py-2 rounded-xl shadow-sm transition-colors border border-slate-200">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i> Menú Principal
+    </a>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="w-full max-w-2xl relative z-10 mt-12 md:mt-0">
+        
+        <!-- PANTALLA DE INICIO -->
+        <div id="start-screen" class="game-card p-10 text-center fade-in">
+            <div class="mb-8 flex justify-center gap-4">
+                <div class="animate-bounce delay-100 bg-indigo-100 p-4 rounded-2xl shadow-sm transform -rotate-6">
+                    <i data-lucide="shield" class="w-12 h-12 text-indigo-600"></i>
+                </div>
+                <div class="animate-bounce delay-200 bg-violet-100 p-4 rounded-2xl shadow-sm transform rotate-6">
+                    <i data-lucide="users" class="w-12 h-12 text-violet-600"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-3 tracking-tight">La Paternidad</h1>
+            <p class="text-slate-500 mb-10 text-lg">Lección 6: Un encuentro excepcional.</p>
+            
+            <div class="space-y-6 max-w-sm mx-auto">
+                <div class="text-left group">
+                    <label class="block text-sm font-bold text-slate-600 mb-2 ml-1 group-focus-within:text-indigo-600 transition-colors">¿Cómo te llamas?</label>
+                    <div class="relative">
+                        <i data-lucide="user" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5"></i>
+                        <input type="text" id="username" placeholder="Tu nombre..." class="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 focus:outline-none text-lg transition-all shadow-sm">
+                    </div>
+                </div>
+                <button onclick="startGame()" class="w-full bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-indigo-200 transform transition active:scale-95 text-xl flex items-center justify-center gap-2">
+                    <span>Iniciar Trivia</span>
+                    <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE JUEGO -->
+        <div id="game-screen" class="hidden">
+            <!-- Header Flotante -->
+            <div class="flex items-center justify-between mb-6 px-2">
+                <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm text-slate-700 font-bold border border-white/50">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-500"></i>
+                    <span id="current-q-num">1</span><span class="text-slate-400 font-normal">/10</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm text-slate-700 font-bold border border-white/50">
+                    <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-yellow-500"></i>
+                    <span id="score-display">0</span>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Pregunta -->
+            <div class="game-card p-6 md:p-8 relative overflow-hidden">
+                <!-- Barra de progreso superior -->
+                <div class="absolute top-0 left-0 h-1.5 bg-slate-100 w-full">
+                    <div id="progress-bar" class="h-full bg-indigo-500 transition-all duration-500" style="width: 0%"></div>
+                </div>
+                
+                <div id="question-container" class="fade-in mt-2">
+                    <!-- Icono de Categoría Dinámico -->
+                    <div class="flex justify-center mb-6">
+                        <div id="q-icon-wrapper" class="p-5 rounded-full shadow-inner category-icon">
+                            <i id="q-icon" data-lucide="help-circle" class="w-10 h-10"></i>
+                        </div>
+                    </div>
+
+                    <h2 id="question-text" class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-8 leading-snug">
+                        ¿Pregunta?
+                    </h2>
+
+                    <!-- Opciones -->
+                    <div id="options-container" class="grid grid-cols-1 gap-3 mb-6">
+                        <!-- Se llenan con JS -->
+                    </div>
+
+                    <!-- Botón de Ayuda (Footer) -->
+                    <div class="flex justify-center border-t border-slate-100 pt-4">
+                        <button onclick="toggleHint()" id="hint-btn" class="text-sm flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors font-semibold group">
+                            <div class="bg-slate-100 group-hover:bg-indigo-100 p-2 rounded-full transition-colors">
+                                <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                            </div>
+                            <span id="hint-label">Necesito una pista</span>
+                        </button>
+                    </div>
+                    
+                    <div id="hint-text" class="hidden mt-4 p-4 bg-violet-50 text-violet-800 text-center rounded-xl border border-violet-100 text-sm animate-pulse">
+                        Aquí aparecerá la pista...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE RESULTADOS -->
+        <div id="result-screen" class="hidden game-card p-8 text-center fade-in max-h-[90vh] overflow-y-auto">
+            <div class="mb-6 flex justify-center">
+                <div id="result-icon-container" class="p-6 rounded-full shadow-inner bg-white">
+                    <!-- Icono dinámico -->
+                </div>
+            </div>
+            
+            <h2 class="text-3xl font-bold text-slate-800 brand-font mb-2">Resultado Final</h2>
+            <p id="result-greeting" class="text-xl text-slate-500 mb-8">Hola, Nombre</p>
+            
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100">
+                    <div class="text-xs text-indigo-600 font-bold uppercase mb-1">Aciertos</div>
+                    <div id="final-score" class="text-4xl font-black text-slate-800">0</div>
+                </div>
+                <div class="bg-violet-50 p-4 rounded-2xl border border-violet-100">
+                    <div class="text-xs text-violet-600 font-bold uppercase mb-1">Meta</div>
+                    <div class="text-4xl font-black text-slate-400">7<span class="text-xl">/10</span></div>
+                </div>
+            </div>
+
+            <div id="final-message-box" class="p-4 rounded-2xl mb-8">
+                <p id="final-message" class="text-lg font-medium leading-relaxed">Mensaje</p>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <button onclick="location.reload()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-4 rounded-xl shadow-lg transform transition hover:-translate-y-1 text-lg flex items-center justify-center gap-3">
+                    <i data-lucide="rotate-ccw" class="w-5 h-5"></i> 
+                    Volver a Jugar
+                </button>
+                <a href="index.html" class="w-full bg-white border border-slate-200 text-slate-600 font-bold py-4 rounded-xl hover:bg-slate-50 text-lg flex items-center justify-center gap-2">
+                    <i data-lucide="layout-grid" class="w-5 h-5"></i> Ir al Menú
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODAL DE FEEDBACK -->
+    <div id="feedback-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden flex items-end sm:items-center justify-center z-50 p-4 sm:p-6 transition-opacity">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl transform scale-100 transition-all">
+            <div class="text-center mb-6">
+                <div id="modal-icon" class="mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-sm">
+                    <!-- Icono -->
+                </div>
+                <h3 id="modal-title" class="text-3xl font-bold mb-2 brand-font">¡Correcto!</h3>
+                <p id="modal-message" class="text-slate-600 leading-relaxed">Explicación breve.</p>
+            </div>
+            
+            <div id="correct-answer-box" class="hidden bg-red-50 p-4 rounded-2xl border border-red-100 mb-6 text-left relative overflow-hidden">
+                <span class="text-xs font-bold text-red-500 uppercase tracking-wider block mb-1">La respuesta correcta era:</span>
+                <p id="correct-answer-text" class="text-slate-800 font-bold text-lg leading-tight">Texto respuesta</p>
+            </div>
+
+            <button onclick="nextQuestion()" class="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl hover:bg-slate-800 transition active:scale-95 shadow-lg flex justify-center items-center gap-2">
+                <span>Continuar</span>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // --- BANCO DE PREGUNTAS (20 Total - Lección 6) ---
+        // Categories: 'father' (Padre), 'belonging' (Pertenencia), 'protection' (Protección), 'provision' (Provisión)
+        const allQuestions = [
+            {
+                q: "¿Cuál es el tema principal de la Sexta Cita del Plan Pastoral?",
+                options: ["El Bautismo en Agua", "La Paternidad: Un encuentro excepcional", "El Servicio en la Iglesia", "Los Milagros de Jesús"],
+                correct: 1,
+                hint: "Habla sobre nuestra relación con Dios como nuestro Padre.",
+                category: "father",
+                icon: "crown"
+            },
+            {
+                q: "Según el texto, ¿qué necesitamos hacer con el concepto que tenemos de un 'padre'?",
+                options: ["Olvidarlo para siempre", "Renovarlo", "Mantenerlo igual", "Escribirlo en un libro"],
+                correct: 1,
+                hint: "A veces nuestro concepto terrenal no es suficiente para entender a Dios.",
+                category: "father",
+                icon: "refresh-cw"
+            },
+            {
+                q: "¿Por qué a veces nos cuesta disfrutar a Dios como Padre?",
+                options: ["Porque no existe", "Porque nos acercamos a Él con el concepto de nuestros padres terrenales", "Porque Él es muy estricto", "Porque estamos muy ocupados"],
+                correct: 1,
+                hint: "Proyectamos las fallas humanas en un ser divino.",
+                category: "father",
+                icon: "user-x"
+            },
+            {
+                q: "A diferencia de nuestros padres terrenales que tienen fallas, ¿cómo es Dios?",
+                options: ["Un padre distante", "Un padre perfecto", "Un juez severo", "Un amigo más"],
+                correct: 1,
+                hint: "Él nunca se equivoca en su forma de amarnos.",
+                category: "father",
+                icon: "check-circle"
+            },
+            {
+                q: "¿Qué dice Salmo 22:9-10 sobre desde cuándo Dios es nuestro Dios?",
+                options: ["Desde que fuimos a la iglesia", "Desde que nos portamos bien", "Desde el vientre de nuestra madre", "Desde que aprendimos a hablar"],
+                correct: 2,
+                hint: "Su amor y cuidado nos acompaña desde antes de nacer.",
+                category: "belonging",
+                icon: "baby"
+            },
+            {
+                q: "¿Cuántas necesidades básicas de un hijo menciona la lección?",
+                options: ["Dos", "Tres", "Cinco", "Siete"],
+                correct: 1,
+                hint: "Pertenencia, Protección y Provisión.",
+                category: "father",
+                icon: "list-ordered"
+            },
+            {
+                q: "¿Qué significa la necesidad de 'Pertenencia'?",
+                options: ["Tener muchas cosas materiales", "Sentir que provenimos de un lugar específico y somos de alguien", "Vivir en una casa grande", "Ser dueño de un negocio"],
+                correct: 1,
+                hint: "Llena el vacío existencial de saber de dónde venimos.",
+                category: "belonging",
+                icon: "users"
+            },
+            {
+                q: "Según Deuteronomio 26:18, ¿qué somos nosotros para Dios?",
+                options: ["Empleados", "Vecinos", "De su exclusiva posesión", "Conocidos lejanos"],
+                correct: 2,
+                hint: "Le pertenecemos totalmente a Él.",
+                category: "belonging",
+                icon: "heart-handshake"
+            },
+            {
+                q: "Cuando Jesús enseñó a orar diciendo 'Padre nuestro', ¿qué nos estaba demostrando?",
+                options: ["Que solo Él era hijo", "Que Él es mi papá y yo soy de Él", "Que Dios es lejano", "Una frase de cortesía"],
+                correct: 1,
+                hint: "Establece una relación de pertenencia directa.",
+                category: "belonging",
+                icon: "home"
+            },
+            {
+                q: "En cuanto a la pertenencia, ¿qué error a veces cometemos a nivel social o emocional?",
+                options: ["Viajar mucho", "Dormir demasiado", "Pagar un alto precio tratando de encajar en grupos", "Estudiar en exceso"],
+                correct: 2,
+                hint: "Hacemos cosas que no queremos solo para ser aceptados por otros.",
+                category: "belonging",
+                icon: "alert-triangle"
+            },
+            {
+                q: "¿Cuál es la segunda necesidad de un hijo mencionada en la lección?",
+                options: ["Pertenencia", "Provisión", "Protección", "Paciencia"],
+                correct: 2,
+                hint: "Es el antídoto contra el miedo o el peligro.",
+                category: "protection",
+                icon: "shield"
+            },
+            {
+                q: "¿Por qué en ocasiones las personas actúan con ira o a la defensiva?",
+                options: ["Porque no quieren que los lastimen o por miedo", "Porque son muy fuertes", "Porque quieren llamar la atención", "Porque no tienen amigos"],
+                correct: 0,
+                hint: "Es un mecanismo humano cuando no nos sentimos seguros.",
+                category: "protection",
+                icon: "flame"
+            },
+            {
+                q: "Para suplir nuestra necesidad de protección, ¿qué figura usa la Biblia para describir a Dios?",
+                options: ["Una espada", "Un castillo", "Nuestro escudo", "Una montaña"],
+                correct: 2,
+                hint: "Salmo 3:3 menciona este elemento defensivo.",
+                category: "protection",
+                icon: "shield-check"
+            },
+            {
+                q: "¿Qué parte de la oración del 'Padre Nuestro' refleja la necesidad de protección?",
+                options: ["Venga tu reino", "Danos hoy nuestro pan", "Líbranos del mal", "Hágase tu voluntad"],
+                correct: 2,
+                hint: "Es una petición directa para que nos mantenga a salvo.",
+                category: "protection",
+                icon: "umbrella"
+            },
+            {
+                q: "Al saber que Dios nos defiende, ¿qué actitud debemos dejar atrás?",
+                options: ["La alegría", "Desgastarnos estando a la defensiva", "Orar todos los días", "Ayudar a los demás"],
+                correct: 1,
+                hint: "Ya no necesitamos pelear nuestras propias batallas solos.",
+                category: "protection",
+                icon: "user-minus"
+            },
+            {
+                q: "¿Cuál es la tercera necesidad de un hijo mencionada en el documento?",
+                options: ["Protección", "Pertenencia", "Perdón", "Provisión"],
+                correct: 3,
+                hint: "Tiene que ver con suplir nuestros faltantes.",
+                category: "provision",
+                icon: "gift"
+            },
+            {
+                q: "Basado en 3 Juan 1:2, ¿cómo es la provisión de Dios?",
+                options: ["Solo económica", "Solo espiritual", "No existe", "Suple todas las necesidades de nuestras 3 áreas"],
+                correct: 3,
+                hint: "Nos hace entender que en Él estamos completos en todo sentido.",
+                category: "provision",
+                icon: "package-check"
+            },
+            {
+                q: "¿Qué es necesario para remover las barreras que nos impiden ver a Dios como Padre?",
+                options: ["Tener mucho dinero", "El perdón hacia nuestros padres terrenales", "Viajar lejos", "Cambiar de nombre"],
+                correct: 1,
+                hint: "Sanar el pasado terrenal nos ayuda a recibir el amor celestial.",
+                category: "father",
+                icon: "heart"
+            },
+            {
+                q: "Según la lección, a veces proyectamos en Dios los faltantes de...",
+                options: ["...nuestros amigos", "...nuestros padres acá en la tierra", "...nuestros jefes", "...los políticos"],
+                correct: 1,
+                hint: "Creemos que Él actuará de la misma manera imperfecta.",
+                category: "father",
+                icon: "eye-off"
+            },
+            {
+                q: "¿Cuál es la tarea práctica sugerida al final de esta cita?",
+                options: ["Cantar una canción", "Hacer ejercicio", "Escribir una carta a Dios expresando lo que sentimos por nuestro padre terrenal", "Dibujar un tren"],
+                correct: 2,
+                hint: "Ayuda a sacar el rencor o la rabia guardada en el corazón.",
+                category: "father",
+                icon: "mail"
+            }
+        ];
+
+        // --- ESTADO DEL JUEGO ---
+        let gameQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userName = "";
+
+        // --- FUNCIONES ---
+
+        // Inicializar iconos
+        lucide.createIcons();
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startGame() {
+            const nameInput = document.getElementById('username');
+            if (!nameInput.value.trim()) {
+                // Shake effect on input
+                nameInput.classList.add('ring-4', 'ring-red-200', 'border-red-500');
+                setTimeout(() => nameInput.classList.remove('ring-4', 'ring-red-200', 'border-red-500'), 500);
+                return;
+            }
+            userName = nameInput.value;
+            
+            // Seleccionar 10 preguntas aleatorias
+            const shuffled = shuffleArray([...allQuestions]);
+            gameQuestions = shuffled.slice(0, 10);
+            
+            currentQuestionIndex = 0;
+            score = 0;
+            
+            // Actualizar UI
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+            updateScore();
+            
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const qData = gameQuestions[currentQuestionIndex];
+            
+            // Actualizar barra de progreso
+            const progressPct = ((currentQuestionIndex) / 10) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPct}%`;
+
+            // Actualizar textos
+            document.getElementById('current-q-num').textContent = currentQuestionIndex + 1;
+            document.getElementById('question-text').textContent = qData.q;
+            
+            // Actualizar Icono Dinámico
+            const iconWrapper = document.getElementById('q-icon-wrapper');
+            const iconEl = document.getElementById('q-icon');
+            
+            // Reset classes
+            iconWrapper.className = 'p-5 rounded-full shadow-inner category-icon mb-2 transform transition-all duration-500 hover:scale-110';
+            
+            // Apply category styles
+            if (qData.category === 'father') iconWrapper.classList.add('cat-father');
+            else if (qData.category === 'belonging') iconWrapper.classList.add('cat-belonging');
+            else if (qData.category === 'protection') iconWrapper.classList.add('cat-protection');
+            else iconWrapper.classList.add('cat-provision');
+            
+            // Set icon attribute and refresh
+            iconEl.setAttribute('data-lucide', qData.icon || 'help-circle');
+            lucide.createIcons();
+
+            // Resetear Pista
+            const hintBox = document.getElementById('hint-text');
+            const hintBtn = document.getElementById('hint-btn');
+            const hintLabel = document.getElementById('hint-label');
+            
+            hintBox.classList.add('hidden');
+            hintBox.textContent = qData.hint;
+            hintLabel.textContent = "Necesito una pista";
+            hintBtn.classList.remove('text-indigo-600');
+            hintBtn.classList.add('text-slate-500');
+            
+            // Generar Opciones
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn w-full text-left bg-white border border-slate-200 text-slate-700 font-bold py-4 px-6 rounded-2xl shadow-sm hover:shadow-md flex items-center group";
+                
+                const letterBox = document.createElement('span');
+                letterBox.className = "flex-shrink-0 w-8 h-8 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center mr-4 text-sm font-black group-hover:bg-indigo-100 group-hover:text-indigo-700 transition-colors";
+                letterBox.textContent = String.fromCharCode(65 + index);
+                
+                btn.appendChild(letterBox);
+                btn.appendChild(document.createTextNode(opt));
+                
+                btn.onclick = () => checkAnswer(index, qData.correct, qData.options[qData.correct]);
+                optionsContainer.appendChild(btn);
+            });
+
+            // Animación suave
+            const container = document.getElementById('question-container');
+            container.classList.remove('fade-in');
+            void container.offsetWidth; 
+            container.classList.add('fade-in');
+        }
+
+        function toggleHint() {
+            const hintBox = document.getElementById('hint-text');
+            const hintLabel = document.getElementById('hint-label');
+            const hintBtn = document.getElementById('hint-btn');
+
+            if (hintBox.classList.contains('hidden')) {
+                hintBox.classList.remove('hidden');
+                hintLabel.textContent = "Ocultar Pista";
+                hintBtn.classList.add('text-indigo-600');
+                hintBtn.classList.remove('text-slate-500');
+            } else {
+                hintBox.classList.add('hidden');
+                hintLabel.textContent = "Necesito una pista";
+                hintBtn.classList.remove('text-indigo-600');
+                hintBtn.classList.add('text-slate-500');
+            }
+        }
+
+        function checkAnswer(selectedIndex, correctIndex, correctText) {
+            const isCorrect = selectedIndex === correctIndex;
+            
+            if (isCorrect) {
+                score++;
+                updateScore();
+                showModal(true, null);
+            } else {
+                showModal(false, correctText);
+            }
+        }
+
+        function showModal(isCorrect, correctText) {
+            const modal = document.getElementById('feedback-modal');
+            const iconContainer = document.getElementById('modal-icon');
+            const title = document.getElementById('modal-title');
+            const message = document.getElementById('modal-message');
+            const correctBox = document.getElementById('correct-answer-box');
+            const correctTextElem = document.getElementById('correct-answer-text');
+
+            modal.classList.remove('hidden');
+            // Trigger animation
+            setTimeout(() => {
+                modal.firstElementChild.classList.remove('scale-95', 'opacity-0');
+                modal.firstElementChild.classList.add('scale-100', 'opacity-100');
+            }, 10);
+
+            if (isCorrect) {
+                // Green / Success Style
+                iconContainer.className = "mx-auto w-24 h-24 rounded-full flex items-center justify-center mb-4 bg-green-100 text-green-500 animate-bounce";
+                iconContainer.innerHTML = '<i data-lucide="check" class="w-12 h-12"></i>';
+                title.textContent = "¡Es Correcto!";
+                title.className = "text-3xl font-bold mb-2 brand-font text-green-600";
+                message.textContent = "¡Muy bien contestado!";
+                correctBox.classList.add('hidden');
+            } else {
+                // Red / Error Style
+                iconContainer.className = "mx-auto w-24 h-24 rounded-full flex items-center justify-center mb-4 bg-red-100 text-red-500";
+                iconContainer.innerHTML = '<i data-lucide="x" class="w-12 h-12"></i>';
+                title.textContent = "Incorrecto";
+                title.className = "text-3xl font-bold mb-2 brand-font text-red-600";
+                message.textContent = "Esa no era la respuesta correcta.";
+                
+                correctTextElem.textContent = correctText;
+                correctBox.classList.remove('hidden');
+            }
+            lucide.createIcons();
+        }
+
+        function nextQuestion() {
+            const modal = document.getElementById('feedback-modal');
+            modal.classList.add('hidden');
+            
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < 10) {
+                loadQuestion();
+            } else {
+                finishGame();
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('score-display').textContent = score;
+        }
+
+        function finishGame() {
+            document.getElementById('game-screen').classList.add('hidden');
+            const resultScreen = document.getElementById('result-screen');
+            resultScreen.classList.remove('hidden');
+            
+            document.getElementById('result-greeting').textContent = `¡Muy bien, ${userName}!`;
+            document.getElementById('final-score').textContent = score;
+            
+            const messageEl = document.getElementById('final-message');
+            const messageBox = document.getElementById('final-message-box');
+            const iconContainer = document.getElementById('result-icon-container');
+
+            if (score >= 7) {
+                messageEl.textContent = "¡Felicidades! Has comprendido maravillosamente que Dios es el Padre perfecto que te da pertenencia, protección y provisión.";
+                messageBox.className = "bg-green-100 text-green-800 p-6 rounded-2xl mb-8 border border-green-200";
+                iconContainer.className = "p-6 rounded-full bg-indigo-100 text-indigo-600 mb-4 inline-block";
+                iconContainer.innerHTML = '<i data-lucide="trophy" class="w-20 h-20"></i>';
+            } else {
+                messageEl.textContent = "Aún hay detalles por afirmar. Recuerda que Él es tu escudo y provisión. ¡Inténtalo nuevamente!";
+                messageBox.className = "bg-slate-100 text-slate-700 p-6 rounded-2xl mb-8 border border-slate-200";
+                iconContainer.className = "p-6 rounded-full bg-slate-200 text-slate-500 mb-4 inline-block";
+                iconContainer.innerHTML = '<i data-lucide="book-open" class="w-20 h-20"></i>';
+            }
+            lucide.createIcons();
+        }
+
+    </script>
+</body>
+</html>
