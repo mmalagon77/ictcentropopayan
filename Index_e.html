@@ -3,258 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Pastoral | Inicio</title>
+    <title>Plan Pastoral | ICT Centro Popayán</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #f8fafc;
-        }
-
-        .serif-font {
-            font-family: 'Lora', serif;
-        }
+        html { scroll-behavior: smooth; }
 
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-image: linear-gradient(rgba(30, 58, 138, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-        }
-
-        .lesson-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .lesson-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         .icon-box {
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
         }
+
+        /* Ocultar menú móvil suavemente */
+        #mobile-menu { transition: all 0.3s ease-in-out; }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="font-sans text-gray-800 antialiased bg-gray-50 flex flex-col min-h-screen">
+
+    <!-- Navegación IDÉNTICA a index.html -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center gap-3 group">
+                        <div class="w-12 h-10 bg-gradient-to-br from-brand-500 to-brand-700 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:shadow-lg transition-all transform group-hover:-translate-y-0.5">
+                            ICT
+                        </div>
+                        <span class="font-bold text-xl md:text-2xl text-gray-900 tracking-tight group-hover:text-brand-600 transition-colors">Centro Popayán</span>
+                    </a>
+                </div>
+                
+                <!-- Menú de escritorio -->
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+                    <a href="index.html#inicio" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Inicio</a>
+                    <a href="index.html#identidad" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Nosotros</a>
+                    <a href="index.html#agenda" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Agenda</a>
+                    <a href="https://soyict.org/somos/" target="_blank" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">SOYICT</a>
+                    
+                    <div class="h-6 w-px bg-gray-200"></div> <!-- Divisor -->
+                    
+                    <a href="index_e.html" class="text-brand-600 hover:text-brand-800 font-semibold transition-colors text-sm lg:text-base">Estudiemos</a>
+                    <a href="#contacto" class="bg-brand-500 text-white px-6 py-2.5 rounded-full font-medium hover:bg-brand-600 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hidden xl:block">
+                        Visítanos
+                    </a>
+                </div>
+
+                <!-- Botón menú móvil -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-600 focus:outline-none p-2 bg-gray-50 rounded-lg transition-colors">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú móvil (Dropdown) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full z-40 shadow-xl rounded-b-2xl animate-fade-in">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="index.html#inicio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-home w-6 text-center text-gray-400"></i> Inicio</a>
+                <a href="index.html#identidad" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-users w-6 text-center text-gray-400"></i> Quiénes Somos</a>
+                <a href="index.html#agenda" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="far fa-calendar-alt w-6 text-center text-gray-400"></i> Nuestra Agenda</a>
+                <a href="https://soyict.org/somos/" target="_blank" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-globe w-6 text-center text-gray-400"></i> SOYICT</a>
+                <div class="h-px w-full bg-gray-100 my-2"></div>
+                <a href="index_e.html" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-brand-600 hover:text-brand-800 hover:bg-brand-50 transition-colors"><i class="fas fa-book-reader w-6 text-center text-brand-400"></i> Estudiemos</a>
+                <a href="#contacto" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-colors"><i class="fas fa-map-marker-alt w-6 text-center text-gray-400"></i> Contacto</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- HERO SECTION -->
     <header class="hero-bg text-white py-24 px-6 text-center relative overflow-hidden">
-        
-        <!-- BOTÓN VOLVER -->
-        <div class="absolute top-6 left-6 z-20">
-            <a href="index.html" class="flex items-center text-slate-300 hover:text-white transition-all duration-300 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm font-medium text-sm border border-white/10 shadow-sm group">
-                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"></i>
-                Volver al inicio
-            </a>
-        </div>
-
         <div class="relative z-10 max-w-5xl mx-auto">
             <!-- Badge / Etiqueta Superior -->
-            <span class="bg-blue-500/20 text-blue-100 py-2 px-5 rounded-full text-sm font-bold tracking-wide border border-blue-400/30 backdrop-blur-sm mb-8 inline-block uppercase">
+            <span class="bg-brand-500/20 text-brand-100 py-2 px-5 rounded-full text-sm font-bold tracking-wide border border-brand-400/30 backdrop-blur-sm mb-8 inline-block uppercase">
                 Más que Asistir: Comprometido
             </span>
             
             <!-- Título Principal -->
-            <h1 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight serif-font leading-tight">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 tracking-tight leading-tight">
                 Verdad que Forma,<br>Verdad que Transforma
             </h1>
             
             <!-- Cita / Descripción -->
             <div class="max-w-3xl mx-auto">
-                <p class="text-xl md:text-2xl text-slate-300 font-light leading-relaxed italic">
+                <p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed italic">
                     "La enseñanza es provisión de Dios para mi vida... su enseñanza es suficiente para mí porque es alimento que marca y guía el corazón."
                 </p>
-                <div class="mt-4 flex items-center justify-center gap-2">
-                    <span class="h-px w-8 bg-blue-500/50"></span>
-                    <span class="text-blue-200 font-semibold text-base uppercase tracking-widest text-sm">Jimmy Chamorro</span>
-                    <span class="h-px w-8 bg-blue-500/50"></span>
+                <div class="mt-6 flex items-center justify-center gap-3">
+                    <span class="h-px w-10 bg-brand-500/50"></span>
+                    <span class="text-brand-200 font-bold uppercase tracking-widest text-sm">Jimmy Chamorro</span>
+                    <span class="h-px w-10 bg-brand-500/50"></span>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- VERSÍCULO DEL DÍA -->
-    <div class="bg-white border-b border-slate-200">
-        <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
-            <div class="text-yellow-500">
-                <i data-lucide="sun" class="w-6 h-6"></i>
+    <div class="bg-white border-b border-gray-200 shadow-sm relative z-20">
+        <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-center gap-5 text-center md:text-left">
+            <div class="text-yellow-500 bg-yellow-50 w-14 h-14 flex items-center justify-center rounded-full shrink-0">
+                <i class="fas fa-sun text-2xl"></i>
             </div>
             <div>
-                <p class="text-slate-600 italic serif-font text-lg">"Lámpara es a mis pies tu palabra, y lumbrera a mi camino."</p>
-                <p class="text-slate-400 text-xs font-bold mt-1 tracking-wide uppercase">Salmo 119:105</p>
+                <p class="text-gray-600 italic font-medium text-lg leading-relaxed">"Lámpara es a mis pies tu palabra, y lumbrera a mi camino."</p>
+                <p class="text-gray-400 text-xs font-bold mt-2 tracking-widest uppercase">Salmo 119:105</p>
             </div>
         </div>
     </div>
 
     <!-- GRID DE LECCIONES -->
-    <main class="flex-grow max-w-6xl mx-auto px-6 py-12 w-full">
-        <div class="flex items-center justify-between mb-10 border-b border-slate-200 pb-4">
-            <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
-                <i data-lucide="map" class="text-blue-600"></i>
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 border-b border-gray-200 pb-5 gap-4">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 flex items-center gap-3">
+                <i class="fas fa-map text-brand-600"></i>
                 Tu Ruta de Aprendizaje
             </h2>
-            <span class="text-xs font-bold text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full uppercase tracking-wider">7 Etapas Completas</span>
+            <span class="text-xs font-bold text-gray-500 bg-white border border-gray-200 px-4 py-2 rounded-full uppercase tracking-wider shadow-sm">
+                7 Etapas Completas
+            </span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- LECCIÓN 1 -->
-            <a href="Leccion_1.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="icon-box p-3 rounded-xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        <i data-lucide="train-front" class="w-8 h-8"></i>
+            <a href="Leccion_1.html" class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer block relative overflow-hidden">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors text-2xl shadow-sm">
+                        <i class="fas fa-train"></i>
                     </div>
-                    <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 border border-brand-100 px-3 py-1.5 rounded-lg uppercase">Comenzar</span>
                 </div>
                 
-                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">El Orden Correcto</h3>
-                <p class="text-slate-500 text-sm mb-4 leading-relaxed">
+                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition-colors">El Orden Correcto</h3>
+                <p class="text-gray-500 text-base mb-6 leading-relaxed">
                     La analogía del tren: Entendiendo el lugar de los hechos, la fe y los sentimientos.
                 </p>
 
-                <div class="flex gap-2 mb-6">
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-video text-gray-400 mr-2"></i> Video</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-headphones text-gray-400 mr-2"></i> Audio</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-brain text-gray-400 mr-2"></i> Trivia</span>
                 </div>
 
-                <div class="flex items-center text-blue-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
-                    Ir a la Lección 1 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                <div class="flex items-center justify-between text-brand-600 text-sm font-bold mt-auto border-t border-gray-50 pt-5">
+                    Ir a la Lección 1 
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform bg-brand-50 w-8 h-8 flex items-center justify-center rounded-full group-hover:bg-brand-100"></i>
                 </div>
             </a>
 
             <!-- LECCIÓN 2 -->
-            <a href="Leccion_2.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="icon-box p-3 rounded-xl text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);">
-                        <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+            <a href="Leccion_2.html" class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer block relative overflow-hidden">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors text-2xl shadow-sm">
+                        <i class="fas fa-hand-holding-heart"></i>
                     </div>
-                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                    <span class="text-xs font-bold text-purple-600 bg-purple-50 border border-purple-100 px-3 py-1.5 rounded-lg uppercase">Comenzar</span>
                 </div>
-                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors">Sentimientos vs Verdades</h3>
-                <p class="text-slate-500 text-sm mb-4">Descubre los 5 regalos de Dios que combaten las emociones negativas.</p>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">Sentimientos vs Verdades</h3>
+                <p class="text-gray-500 text-base mb-6 leading-relaxed">Descubre los 5 regalos de Dios que combaten las emociones negativas.</p>
 
-                <div class="flex gap-2 mb-6">
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-video text-gray-400 mr-2"></i> Video</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-headphones text-gray-400 mr-2"></i> Audio</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-brain text-gray-400 mr-2"></i> Trivia</span>
                 </div>
 
-                <div class="flex items-center text-purple-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
-                    Ir a la Lección 2 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                <div class="flex items-center justify-between text-purple-600 text-sm font-bold mt-auto border-t border-gray-50 pt-5">
+                    Ir a la Lección 2 
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform bg-purple-50 w-8 h-8 flex items-center justify-center rounded-full group-hover:bg-purple-100"></i>
                 </div>
             </a>
 
             <!-- LECCIÓN 3 -->
-            <a href="Leccion_3.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="icon-box p-3 rounded-xl text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #ffedd5 0%, #ffedd5 100%);">
-                        <i data-lucide="brick-wall" class="w-8 h-8"></i>
+            <a href="Leccion_3.html" class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer block relative overflow-hidden">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors text-2xl shadow-sm">
+                        <i class="fas fa-cubes"></i>
                     </div>
-                    <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                    <span class="text-xs font-bold text-orange-600 bg-orange-50 border border-orange-100 px-3 py-1.5 rounded-lg uppercase">Comenzar</span>
                 </div>
-                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">Las Bases de Nuestra Vida</h3>
-                <p class="text-slate-500 text-sm mb-4">Aprendiendo a construir nuestra casa sobre la Roca, sostenida por 5 regalos.</p>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">Las Bases de Nuestra Vida</h3>
+                <p class="text-gray-500 text-base mb-6 leading-relaxed">Aprendiendo a construir nuestra casa sobre la Roca, sostenida por 5 regalos.</p>
 
-                <div class="flex gap-2 mb-6">
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-video text-gray-400 mr-2"></i> Video</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-headphones text-gray-400 mr-2"></i> Audio</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-brain text-gray-400 mr-2"></i> Trivia</span>
                 </div>
 
-                <div class="flex items-center text-orange-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
-                    Ir a la Lección 3 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                <div class="flex items-center justify-between text-orange-600 text-sm font-bold mt-auto border-t border-gray-50 pt-5">
+                    Ir a la Lección 3 
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform bg-orange-50 w-8 h-8 flex items-center justify-center rounded-full group-hover:bg-orange-100"></i>
                 </div>
             </a>
 
             <!-- LECCIÓN 4 -->
-            <a href="Leccion_4.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="icon-box p-3 rounded-xl text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);">
-                        <i data-lucide="sun" class="w-8 h-8"></i>
+            <a href="Leccion_4.html" class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer block relative overflow-hidden">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-colors text-2xl shadow-sm">
+                        <i class="fas fa-sun"></i>
                     </div>
-                    <span class="text-xs font-bold text-sky-600 bg-sky-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                    <span class="text-xs font-bold text-sky-600 bg-sky-50 border border-sky-100 px-3 py-1.5 rounded-lg uppercase">Comenzar</span>
                 </div>
-                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Su Presencia</h3>
-                <p class="text-slate-500 text-sm mb-4">Un antídoto contra la soledad: Aprendiendo a depender de Dios.</p>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-sky-600 transition-colors">Su Presencia</h3>
+                <p class="text-gray-500 text-base mb-6 leading-relaxed">Un antídoto contra la soledad: Aprendiendo a depender de Dios.</p>
 
-                <div class="flex gap-2 mb-6">
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-video text-gray-400 mr-2"></i> Video</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-headphones text-gray-400 mr-2"></i> Audio</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-brain text-gray-400 mr-2"></i> Trivia</span>
                 </div>
 
-                <div class="flex items-center text-sky-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
-                    Ir a la Lección 4 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                <div class="flex items-center justify-between text-sky-600 text-sm font-bold mt-auto border-t border-gray-50 pt-5">
+                    Ir a la Lección 4 
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform bg-sky-50 w-8 h-8 flex items-center justify-center rounded-full group-hover:bg-sky-100"></i>
                 </div>
             </a>
 
              <!-- LECCIÓN 5 -->
-             <a href="Leccion_5.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="icon-box p-3 rounded-xl text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);">
-                        <i data-lucide="wind" class="w-8 h-8"></i>
+             <a href="Leccion_5.html" class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer block relative overflow-hidden">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-teal-50 rounded-2xl flex items-center justify-center text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors text-2xl shadow-sm">
+                        <i class="fas fa-wind"></i>
                     </div>
-                    <span class="text-xs font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                    <span class="text-xs font-bold text-teal-600 bg-teal-50 border border-teal-100 px-3 py-1.5 rounded-lg uppercase">Comenzar</span>
                 </div>
-                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-teal-600 transition-colors">El Perdón</h3>
-                <p class="text-slate-500 text-sm mb-4">Aprende a inhalar el perdón de Dios y exhalar el pecado para experimentar sanidad.</p>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">El Perdón</h3>
+                <p class="text-gray-500 text-base mb-6 leading-relaxed">Aprende a inhalar el perdón de Dios y exhalar el pecado para experimentar sanidad.</p>
 
-                <div class="flex gap-2 mb-6">
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-video text-gray-400 mr-2"></i> Video</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-headphones text-gray-400 mr-2"></i> Audio</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-brain text-gray-400 mr-2"></i> Trivia</span>
                 </div>
 
-                <div class="flex items-center text-teal-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
-                    Ir a la Lección 5 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                <div class="flex items-center justify-between text-teal-600 text-sm font-bold mt-auto border-t border-gray-50 pt-5">
+                    Ir a la Lección 5 
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform bg-teal-50 w-8 h-8 flex items-center justify-center rounded-full group-hover:bg-teal-100"></i>
                 </div>
             </a>
 
              <!-- LECCIÓN 6 -->
-             <a href="Leccion_6.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="icon-box p-3 rounded-xl text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);">
-                        <i data-lucide="shield" class="w-8 h-8"></i>
+             <a href="Leccion_6.html" class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer block relative overflow-hidden">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors text-2xl shadow-sm">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-lg uppercase">Comenzar</span>
                 </div>
-                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">La Paternidad</h3>
-                <p class="text-slate-500 text-sm mb-4">Renueva tu concepto y descubre en Dios la pertenencia, protección y provisión.</p>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">La Paternidad</h3>
+                <p class="text-gray-500 text-base mb-6 leading-relaxed">Renueva tu concepto y descubre en Dios la pertenencia, protección y provisión.</p>
 
-                <div class="flex gap-2 mb-6">
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-video text-gray-400 mr-2"></i> Video</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-headphones text-gray-400 mr-2"></i> Audio</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-brain text-gray-400 mr-2"></i> Trivia</span>
                 </div>
 
-                <div class="flex items-center text-indigo-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
-                    Ir a la Lección 6 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                <div class="flex items-center justify-between text-indigo-600 text-sm font-bold mt-auto border-t border-gray-50 pt-5">
+                    Ir a la Lección 6 
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform bg-indigo-50 w-8 h-8 flex items-center justify-center rounded-full group-hover:bg-indigo-100"></i>
                 </div>
             </a>
 
              <!-- LECCIÓN 7 -->
-             <a href="Leccion_7.html" class="lesson-card bg-white rounded-2xl p-6 border border-slate-100 shadow-sm group cursor-pointer block ring-1 ring-slate-900/5 relative overflow-hidden">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="icon-box p-3 rounded-xl text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-colors" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
-                        <i data-lucide="compass" class="w-8 h-8"></i>
+             <a href="Leccion_7.html" class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer block relative overflow-hidden md:col-span-2 lg:col-span-1">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-colors text-2xl shadow-sm">
+                        <i class="fas fa-compass"></i>
                     </div>
-                    <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded-md uppercase">Comenzar</span>
+                    <span class="text-xs font-bold text-amber-600 bg-amber-50 border border-amber-100 px-3 py-1.5 rounded-lg uppercase">Comenzar</span>
                 </div>
-                <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-amber-600 transition-colors">Un Propósito y un Norte Claro</h3>
-                <p class="text-slate-500 text-sm mb-4">Renueva tu mente, deja atrás el pasado y pon tus sueños en manos de Dios.</p>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-amber-600 transition-colors">Un Propósito y un Norte Claro</h3>
+                <p class="text-gray-500 text-base mb-6 leading-relaxed">Renueva tu mente, deja atrás el pasado y pon tus sueños en manos de Dios.</p>
 
-                <div class="flex gap-2 mb-6">
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="video" class="w-3 h-3 mr-1"></i> Video</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="headphones" class="w-3 h-3 mr-1"></i> Audio</span>
-                    <span class="inline-flex items-center text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md"><i data-lucide="brain-circuit" class="w-3 h-3 mr-1"></i> Trivia</span>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-video text-gray-400 mr-2"></i> Video</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-headphones text-gray-400 mr-2"></i> Audio</span>
+                    <span class="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg"><i class="fas fa-brain text-gray-400 mr-2"></i> Trivia</span>
                 </div>
 
-                <div class="flex items-center text-amber-600 text-sm font-bold mt-auto border-t border-slate-50 pt-4">
-                    Ir a la Lección 7 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                <div class="flex items-center justify-between text-amber-600 text-sm font-bold mt-auto border-t border-gray-50 pt-5">
+                    Ir a la Lección 7 
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform bg-amber-50 w-8 h-8 flex items-center justify-center rounded-full group-hover:bg-amber-100"></i>
                 </div>
             </a>
 
@@ -262,20 +337,203 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-10 text-center">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="mb-6 flex justify-center">
-                <div class="bg-slate-800 p-3 rounded-full">
-                    <i data-lucide="anchor" class="w-6 h-6 text-slate-300"></i>
+    <footer id="contacto" class="bg-gray-900 pt-20 pb-10 text-white border-t-4 border-brand-500 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                
+                <!-- Info -->
+                <div class="lg:col-span-5">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-10 bg-brand-500 rounded flex items-center justify-center text-white font-bold text-lg">ICT</div>
+                        <span class="font-bold text-2xl tracking-tight text-white">Centro Popayán</span>
+                    </div>
+                    <p class="text-gray-400 mb-8 text-lg leading-relaxed">
+                        Llevando el amor de Jesús, inspirando crecimiento espiritual y conectando familias. Somos parte de la gran familia <a href="https://soyict.org" target="_blank" class="text-brand-400 hover:text-white transition-colors underline underline-offset-4">soyict.org</a>.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-all hover:-translate-y-1"><i class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-all hover:-translate-y-1"><i class="fab fa-instagram text-lg"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-all hover:-translate-y-1"><i class="fab fa-youtube text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Enlaces rápidos -->
+                <div class="lg:col-span-3">
+                    <h3 class="text-xl font-bold mb-6 text-white flex items-center">
+                        <span class="w-8 h-1 bg-brand-500 mr-3 rounded-full"></span>
+                        Explorar
+                    </h3>
+                    <ul class="space-y-4">
+                        <li><a href="index.html#inicio" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-angle-right text-xs mr-3 text-gray-600"></i> Inicio</a></li>
+                        <li><a href="index.html#identidad" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-angle-right text-xs mr-3 text-gray-600"></i> Quiénes Somos</a></li>
+                        <li><a href="index.html#agenda" class="text-gray-400 hover:text-brand-400 transition-colors flex items-center"><i class="fas fa-angle-right text-xs mr-3 text-gray-600"></i> Nuestra Agenda</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto y Ubicación -->
+                <div class="lg:col-span-4">
+                    <h3 class="text-xl font-bold mb-6 text-white flex items-center">
+                        <span class="w-8 h-1 bg-brand-500 mr-3 rounded-full"></span>
+                        Ubicación
+                    </h3>
+                    <ul class="space-y-6 mb-8">
+                        <li class="flex items-center p-4 bg-gray-800/50 rounded-2xl border border-gray-800">
+                            <div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mr-4 text-brand-400 shadow-inner">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <span class="text-gray-200 text-xl font-medium tracking-wide">301 368 0420</span>
+                        </li>
+                        <li class="flex items-start p-4 bg-gray-800/50 rounded-2xl border border-gray-800">
+                            <div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mr-4 text-brand-400 shadow-inner shrink-0 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span class="text-gray-300 leading-relaxed">
+                                Calle 26 AN No.7c - 27<br>
+                                Portales del Norte<br>
+                                <span class="text-brand-400 font-medium">Popayán - Cauca</span>
+                            </span>
+                        </li>
+                    </ul>
+                    <a href="https://maps.app.goo.gl/Emd8d4oNqpnj6EdV8" target="_blank" class="inline-flex items-center justify-center w-full px-6 py-4 bg-brand-600 hover:bg-brand-500 rounded-xl text-base font-bold transition-colors shadow-lg shadow-brand-500/20 group">
+                        <i class="fas fa-external-link-alt mr-2 group-hover:scale-110 transition-transform"></i> Abrir en Google Maps
+                    </a>
                 </div>
             </div>
-            <p class="text-sm mb-2">© 2024 Plan Pastoral. Todos los derechos reservados.</p>
-            <p class="text-xs text-slate-600">Diseñado para el crecimiento espiritual y personal.</p>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 ICT Centro Popayán. Todos los derechos reservados.</p>
+                <div class="mt-4 md:mt-0 space-x-6 flex items-center">
+                    <a href="#" class="hover:text-brand-400 transition-colors">Privacidad</a>
+                    <span class="w-1 h-1 bg-gray-700 rounded-full"></span>
+                    <a href="#" class="hover:text-brand-400 transition-colors">Términos</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Contenedor Flotante de WhatsApp interactivo -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        
+        <!-- Menú desplegable -->
+        <div id="wa-menu" class="hidden flex-col gap-1 mb-4 bg-white rounded-2xl shadow-2xl border border-gray-100 p-2 w-64 transform transition-all duration-300 origin-bottom-right opacity-0 scale-90">
+            <div class="px-3 py-2 border-b border-gray-100 mb-2">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">¿En qué te ayudamos?</span>
+            </div>
+            
+            <a href="https://wa.me/573054456682?text=Hola,%20me%20gustar%C3%ADa%20que%20oremos%20por..." target="_blank" class="flex items-center gap-3 px-3 py-2.5 hover:bg-[#25D366]/10 rounded-xl transition-colors text-gray-700 hover:text-[#25D366] group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#25D366] group-hover:text-white transition-all">
+                    <i class="fas fa-praying-hands"></i>
+                </div>
+                <span class="font-medium text-sm">Oremos por...</span>
+            </a>
+            
+            <a href="https://wa.me/573054456682?text=Hola,%20me%20gustar%C3%ADa%20saber%20qu%C3%A9%20d%C3%ADa%20son%20las%20reuniones" target="_blank" class="flex items-center gap-3 px-3 py-2.5 hover:bg-[#25D366]/10 rounded-xl transition-colors text-gray-700 hover:text-[#25D366] group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#25D366] group-hover:text-white transition-all">
+                    <i class="far fa-calendar-alt"></i>
+                </div>
+                <span class="font-medium text-sm">Las reuniones qué día...</span>
+            </a>
+            
+            <a href="https://wa.me/573054456682?text=Hola,%20necesito%20ayuda%20con..." target="_blank" class="flex items-center gap-3 px-3 py-2.5 hover:bg-[#25D366]/10 rounded-xl transition-colors text-gray-700 hover:text-[#25D366] group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#25D366] group-hover:text-white transition-all">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <span class="font-medium text-sm">Ayúdame con</span>
+            </a>
+            
+            <a href="https://wa.me/573054456682?text=Hola,%20necesito%20que%20hablemos" target="_blank" class="flex items-center gap-3 px-3 py-2.5 hover:bg-[#25D366]/10 rounded-xl transition-colors text-gray-700 hover:text-[#25D366] group">
+                <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 group-hover:bg-[#25D366] group-hover:text-white transition-all">
+                    <i class="far fa-comments"></i>
+                </div>
+                <span class="font-medium text-sm">Hablemos</span>
+            </a>
+        </div>
+
+        <!-- Botón Principal -->
+        <button id="wa-btn" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg shadow-green-500/30 hover:bg-[#1ebd5a] hover:scale-110 transition-all focus:outline-none relative group" aria-label="Opciones de WhatsApp">
+            <i class="fab fa-whatsapp transition-transform duration-300" id="wa-icon"></i>
+            <!-- Tooltip -->
+            <span id="wa-tooltip" class="absolute right-16 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-sm font-semibold py-2 px-4 rounded-xl shadow-xl opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap pointer-events-none before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-right-1 before:border-4 before:border-transparent before:border-l-gray-900">
+                ¿Necesitas ayuda?
+            </span>
+        </button>
+    </div>
+
+    <!-- Scripts Interactivos -->
     <script>
-        lucide.createIcons();
+        // --- Menú móvil con animaciones básicas ---
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            // Cambiar icono
+            const icon = btn.querySelector('i');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                icon.classList.replace('fa-bars', 'fa-times');
+            }
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        // --- Menú Flotante de WhatsApp ---
+        const waBtn = document.getElementById('wa-btn');
+        const waMenu = document.getElementById('wa-menu');
+        const waIcon = document.getElementById('wa-icon');
+        const waTooltip = document.getElementById('wa-tooltip');
+
+        waBtn.addEventListener('click', () => {
+            if (waMenu.classList.contains('hidden')) {
+                // Abrir menú
+                waMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    waMenu.classList.remove('opacity-0', 'scale-90');
+                    waMenu.classList.add('opacity-100', 'scale-100');
+                }, 10);
+                
+                waIcon.classList.replace('fa-whatsapp', 'fa-times');
+                waIcon.style.transform = 'rotate(90deg)';
+                waTooltip.classList.add('hidden'); // Ocultar tooltip al abrir
+            } else {
+                // Cerrar menú
+                waMenu.classList.remove('opacity-100', 'scale-100');
+                waMenu.classList.add('opacity-0', 'scale-90');
+                
+                waIcon.classList.replace('fa-times', 'fa-whatsapp');
+                waIcon.style.transform = 'rotate(0deg)';
+                
+                setTimeout(() => {
+                    waMenu.classList.add('hidden');
+                    waTooltip.classList.remove('hidden'); // Restaurar tooltip al hover
+                }, 300);
+            }
+        });
+
+        // Cerrar menú al hacer clic fuera del contenedor
+        document.addEventListener('click', (e) => {
+            if (!waBtn.contains(e.target) && !waMenu.contains(e.target) && !waMenu.classList.contains('hidden')) {
+                waMenu.classList.remove('opacity-100', 'scale-100');
+                waMenu.classList.add('opacity-0', 'scale-90');
+                
+                waIcon.classList.replace('fa-times', 'fa-whatsapp');
+                waIcon.style.transform = 'rotate(0deg)';
+                
+                setTimeout(() => {
+                    waMenu.classList.add('hidden');
+                    waTooltip.classList.remove('hidden');
+                }, 300);
+            }
+        });
     </script>
 </body>
 </html>
