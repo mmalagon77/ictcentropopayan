@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Simulacro Fracciones 2</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f0f4f8;
+padding:20px;
+}
+
+.container{
+max-width:850px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0px 0px 12px rgba(0,0,0,0.2);
+}
+
+h1{
+text-align:center;
+color:#1f3c88;
+}
+
+.question{
+background:#e8f0ff;
+margin:18px 0;
+padding:15px;
+border-radius:8px;
+}
+
+button{
+background:#28a745;
+color:white;
+border:none;
+padding:14px;
+font-size:18px;
+border-radius:6px;
+cursor:pointer;
+width:100%;
+}
+
+.result{
+margin-top:20px;
+font-size:24px;
+text-align:center;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📘 Simulacro de Fracciones - Nivel Sexto</h1>
+
+<form id="quiz">
+
+<div class="question">
+1️⃣ ¿Cuántas horas son 1/4 de un día?
+<br>
+<input type="radio" name="q1" value="a">4<br>
+<input type="radio" name="q1" value="b">6<br>
+<input type="radio" name="q1" value="c">12<br>
+</div>
+
+<div class="question">
+2️⃣ ¿Cuánto es 1/2 de 50?
+<br>
+<input type="radio" name="q2" value="a">20<br>
+<input type="radio" name="q2" value="b">25<br>
+<input type="radio" name="q2" value="c">30<br>
+</div>
+
+<div class="question">
+3️⃣ Minutos en 3/4 de hora:
+<br>
+<input type="radio" name="q3" value="a">30<br>
+<input type="radio" name="q3" value="b">45<br>
+<input type="radio" name="q3" value="c">60<br>
+</div>
+
+<div class="question">
+4️⃣ Si hay 60 estudiantes y 1/3 son niñas ¿Cuántas niñas hay?
+<br>
+<input type="radio" name="q4" value="a">10<br>
+<input type="radio" name="q4" value="b">15<br>
+<input type="radio" name="q4" value="c">20<br>
+</div>
+
+<div class="question">
+5️⃣ Calcula 2/5 de 40:
+<br>
+<input type="number" id="q5">
+</div>
+
+<div class="question">
+6️⃣ La quinta parte de un número es 12. El número es:
+<br>
+<input type="number" id="q6">
+</div>
+
+<div class="question">
+7️⃣ En una granja hay 80 animales.  
+1/4 son vacas. ¿Cuántas vacas hay?
+<br>
+<input type="number" id="q7">
+</div>
+
+<div class="question">
+8️⃣ De 90 frutas, 1/3 son manzanas.  
+¿Cuántas NO son manzanas?
+<br>
+<input type="number" id="q8">
+</div>
+
+<br>
+
+<button type="button" onclick="calificar()">✅ Calificar examen</button>
+
+</form>
+
+<div class="result" id="resultado"></div>
+
+</div>
+
+<script>
+
+function calificar(){
+
+let puntos=0;
+
+if(document.querySelector('input[name="q1"]:checked')?.value=="b") puntos++;
+if(document.querySelector('input[name="q2"]:checked')?.value=="b") puntos++;
+if(document.querySelector('input[name="q3"]:checked')?.value=="b") puntos++;
+if(document.querySelector('input[name="q4"]:checked')?.value=="c") puntos++;
+
+if(document.getElementById("q5").value==16) puntos++;
+if(document.getElementById("q6").value==60) puntos++;
+if(document.getElementById("q7").value==20) puntos++;
+if(document.getElementById("q8").value==60) puntos++;
+
+document.getElementById("resultado").innerHTML=
+"⭐ Puntaje obtenido: "+puntos+" / 8";
+
+}
+
+</script>
+
+</body>
+</html>
