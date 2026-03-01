@@ -2,52 +2,55 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Simulacro Fracciones - Sexto</title>
+<title>Simulacro Fracciones 2</title>
 
 <style>
+
 body{
 font-family: Arial;
-background:#f4f7fb;
+background:#f0f4f8;
 padding:20px;
 }
 
 .container{
-max-width:800px;
+max-width:850px;
 margin:auto;
 background:white;
 padding:25px;
 border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
+box-shadow:0px 0px 12px rgba(0,0,0,0.2);
 }
 
 h1{
 text-align:center;
-color:#2c3e50;
+color:#1f3c88;
 }
 
 .question{
-margin:20px 0;
+background:#e8f0ff;
+margin:18px 0;
 padding:15px;
-background:#eef3ff;
 border-radius:8px;
 }
 
 button{
-background:#27ae60;
+background:#28a745;
 color:white;
 border:none;
-padding:12px 20px;
+padding:14px;
 font-size:18px;
 border-radius:6px;
 cursor:pointer;
+width:100%;
 }
 
 .result{
-font-size:22px;
 margin-top:20px;
-font-weight:bold;
+font-size:24px;
 text-align:center;
+font-weight:bold;
 }
+
 </style>
 </head>
 
@@ -55,57 +58,71 @@ text-align:center;
 
 <div class="container">
 
-<h1>📘 Simulacro de Fracciones - Sexto</h1>
+<h1>📘 Simulacro de Fracciones - Nivel Sexto</h1>
 
 <form id="quiz">
 
 <div class="question">
-1. La mitad de un día es:
+1️⃣ ¿Cuántas horas son 1/4 de un día?
 <br>
-<input type="radio" name="q1" value="a">10 horas<br>
-<input type="radio" name="q1" value="b">12 horas<br>
-<input type="radio" name="q1" value="c">24 horas<br>
+<input type="radio" name="q1" value="a">4<br>
+<input type="radio" name="q1" value="b">6<br>
+<input type="radio" name="q1" value="c">12<br>
 </div>
 
 <div class="question">
-2. ¿Cuánto es 3/4 de 20?
+2️⃣ ¿Cuánto es 1/2 de 50?
 <br>
-<input type="radio" name="q2" value="a">12<br>
-<input type="radio" name="q2" value="b">15<br>
-<input type="radio" name="q2" value="c">18<br>
+<input type="radio" name="q2" value="a">20<br>
+<input type="radio" name="q2" value="b">25<br>
+<input type="radio" name="q2" value="c">30<br>
 </div>
 
 <div class="question">
-3. Minutos en 1/3 de hora:
+3️⃣ Minutos en 3/4 de hora:
 <br>
-<input type="radio" name="q3" value="a">20<br>
-<input type="radio" name="q3" value="b">30<br>
-<input type="radio" name="q3" value="c">10<br>
+<input type="radio" name="q3" value="a">30<br>
+<input type="radio" name="q3" value="b">45<br>
+<input type="radio" name="q3" value="c">60<br>
 </div>
 
 <div class="question">
-4. 1/5 de 40 estudiantes son niñas. ¿Cuántas?
+4️⃣ Si hay 60 estudiantes y 1/3 son niñas ¿Cuántas niñas hay?
 <br>
-<input type="radio" name="q4" value="a">5<br>
-<input type="radio" name="q4" value="b">8<br>
-<input type="radio" name="q4" value="c">10<br>
+<input type="radio" name="q4" value="a">10<br>
+<input type="radio" name="q4" value="b">15<br>
+<input type="radio" name="q4" value="c">20<br>
 </div>
 
 <div class="question">
-5. Escribe cuánto es 2/3 de 36:
+5️⃣ Calcula 2/5 de 40:
 <br>
 <input type="number" id="q5">
 </div>
 
 <div class="question">
-6. Si la cuarta parte de un número es 9, el número es:
+6️⃣ La quinta parte de un número es 12. El número es:
 <br>
 <input type="number" id="q6">
 </div>
 
+<div class="question">
+7️⃣ En una granja hay 80 animales.  
+1/4 son vacas. ¿Cuántas vacas hay?
+<br>
+<input type="number" id="q7">
+</div>
+
+<div class="question">
+8️⃣ De 90 frutas, 1/3 son manzanas.  
+¿Cuántas NO son manzanas?
+<br>
+<input type="number" id="q8">
+</div>
+
 <br>
 
-<button type="button" onclick="calificar()">Calificar</button>
+<button type="button" onclick="calificar()">✅ Calificar examen</button>
 
 </form>
 
@@ -117,19 +134,20 @@ text-align:center;
 
 function calificar(){
 
-let puntaje=0;
+let puntos=0;
 
-// respuestas correctas
-if(document.querySelector('input[name="q1"]:checked')?.value=="b") puntaje++;
-if(document.querySelector('input[name="q2"]:checked')?.value=="b") puntaje++;
-if(document.querySelector('input[name="q3"]:checked')?.value=="a") puntaje++;
-if(document.querySelector('input[name="q4"]:checked')?.value=="b") puntaje++;
+if(document.querySelector('input[name="q1"]:checked')?.value=="b") puntos++;
+if(document.querySelector('input[name="q2"]:checked')?.value=="b") puntos++;
+if(document.querySelector('input[name="q3"]:checked')?.value=="b") puntos++;
+if(document.querySelector('input[name="q4"]:checked')?.value=="c") puntos++;
 
-if(document.getElementById("q5").value==24) puntaje++;
-if(document.getElementById("q6").value==36) puntaje++;
+if(document.getElementById("q5").value==16) puntos++;
+if(document.getElementById("q6").value==60) puntos++;
+if(document.getElementById("q7").value==20) puntos++;
+if(document.getElementById("q8").value==60) puntos++;
 
 document.getElementById("resultado").innerHTML=
-"⭐ Puntaje: "+puntaje+" / 6";
+"⭐ Puntaje obtenido: "+puntos+" / 8";
 
 }
 
