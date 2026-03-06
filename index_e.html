@@ -371,15 +371,30 @@
     </footer>
 
     <script>
-        // Datos del Reto (21 días de Juan - 1 capítulo por día)
-        const challengeData = Array.from({ length: 21 }, (_, i) => {
-            const day = i + 1;
-            return { 
-                day, 
-                reading: `Juan Capítulo ${day}`, 
-                tip: "No olvides subrayar las palabras Amor y Creer." 
-            };
-        });
+        // Datos del Reto (21 días de Juan - 1 capítulo por día con sus versículos)
+        const challengeData = [
+            { day: 1, reading: "Juan Capítulo 1", verseRef: "Juan 1:12", verseText: "Mas a todos los que le recibieron, a los que creen en su nombre, les dio potestad de ser hechos hijos de Dios." },
+            { day: 2, reading: "Juan Capítulo 2", verseRef: "Juan 2:11", verseText: "Este principio de señales hizo Jesús en Caná de Galilea, y manifestó su gloria; y sus discípulos creyeron en él." },
+            { day: 3, reading: "Juan Capítulo 3", verseRef: "Juan 3:16", verseText: "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree no se pierda, mas tenga vida eterna." },
+            { day: 4, reading: "Juan Capítulo 4", verseRef: "Juan 4:42", verseText: "Ya no creemos solamente por tu dicho, porque nosotros mismos hemos oído, y sabemos que verdaderamente este es el Salvador del mundo." },
+            { day: 5, reading: "Juan Capítulo 5", verseRef: "Juan 5:24", verseText: "El que oye mi palabra y cree al que me envió, tiene vida eterna." },
+            { day: 6, reading: "Juan Capítulo 6", verseRef: "Juan 6:35", verseText: "El que a mí viene, nunca tendrá hambre; y el que en mí cree, no tendrá sed jamás." },
+            { day: 7, reading: "Juan Capítulo 7", verseRef: "Juan 7:38", verseText: "El que cree en mí, como dice la Escritura, de su interior correrán ríos de agua viva." },
+            { day: 8, reading: "Juan Capítulo 8", verseRef: "Juan 8:31", verseText: "Si vosotros permaneciereis en mi palabra, seréis verdaderamente mis discípulos." },
+            { day: 9, reading: "Juan Capítulo 9", verseRef: "Juan 9:38", verseText: "Él dijo: Creo, Señor; y le adoró." },
+            { day: 10, reading: "Juan Capítulo 10", verseRef: "Juan 10:38", verseText: "Si las hago, aunque no me creáis a mí, creed a las obras." },
+            { day: 11, reading: "Juan Capítulo 11", verseRef: "Juan 11:25", verseText: "Yo soy la resurrección y la vida; el que cree en mí, aunque esté muerto, vivirá." },
+            { day: 12, reading: "Juan Capítulo 12", verseRef: "Juan 12:46", verseText: "Yo, la luz, he venido al mundo, para que todo aquel que cree en mí no permanezca en tinieblas." },
+            { day: 13, reading: "Juan Capítulo 13", verseRef: "Juan 13:34", verseText: "Un mandamiento nuevo os doy: Que os améis unos a otros; como yo os he amado." },
+            { day: 14, reading: "Juan Capítulo 14", verseRef: "Juan 14:1", verseText: "No se turbe vuestro corazón; creéis en Dios, creed también en mí." },
+            { day: 15, reading: "Juan Capítulo 15", verseRef: "Juan 15:9", verseText: "Como el Padre me ha amado, así también yo os he amado; permaneced en mi amor." },
+            { day: 16, reading: "Juan Capítulo 16", verseRef: "Juan 16:27", verseText: "El Padre mismo os ama, porque vosotros me habéis amado y habéis creído que yo salí de Dios." },
+            { day: 17, reading: "Juan Capítulo 17", verseRef: "Juan 17:21", verseText: "Para que todos sean uno… para que el mundo crea que tú me enviaste." },
+            { day: 18, reading: "Juan Capítulo 18", verseRef: "Juan 18:37", verseText: "Para esto he nacido, y para esto he venido al mundo, para dar testimonio de la verdad." },
+            { day: 19, reading: "Juan Capítulo 19", verseRef: "Juan 19:35", verseText: "El que lo vio da testimonio… para que vosotros también creáis." },
+            { day: 20, reading: "Juan Capítulo 20", verseRef: "Juan 20:29", verseText: "Bienaventurados los que no vieron, y creyeron." },
+            { day: 21, reading: "Juan Capítulo 21", verseRef: "Juan 21:15", verseText: "Simón, hijo de Jonás, ¿me amas más que estos?" }
+        ];
 
         const grid = document.getElementById('challenge-grid');
         const detail = document.getElementById('detail-content');
@@ -402,12 +417,16 @@
                     Leer en BibleGateway
                 </a>
 
-                <p class="text-slate-400 leading-relaxed mb-8 font-light italic serif-font animate-scale-up">
-                    "Escudriñad las Escrituras; porque a vosotros os parece que en ellas tenéis la vida eterna; y ellas son las que dan testimonio de mí." - Juan 5:39
-                </p>
+                <div class="animate-scale-up mb-8">
+                    <p class="text-brand-500 font-bold text-lg mb-2">${data.verseRef}</p>
+                    <p class="text-slate-400 leading-relaxed font-light italic serif-font">
+                        “${data.verseText}”
+                    </p>
+                </div>
+
                 <div class="p-6 bg-white/5 rounded-2xl border border-white/10 mb-8 animate-scale-up">
                     <p class="text-xs font-bold text-brand-300 uppercase mb-2 tracking-widest">Tip de estudio</p>
-                    <p class="text-sm text-slate-300 font-medium">${data.tip}</p>
+                    <p class="text-sm text-slate-300 font-medium">No olvides subrayar las palabras Amor y Creer.</p>
                 </div>
                 <button onclick="toggleDay(${dayIndex})" class="w-full py-4 rounded-2xl font-black text-sm transition-all ${isCompleted ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30' : 'bg-brand-600 text-white hover:bg-brand-700 shadow-xl shadow-brand-500/20'}">
                     ${isCompleted ? '¡Capítulo Leído!' : 'Marcar como Leído'}
