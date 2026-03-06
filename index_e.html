@@ -322,7 +322,7 @@
 
                 <!-- Panel de Detalle del Día -->
                 <div class="lg:col-span-4 sticky top-28">
-                    <div id="day-detail" class="bg-slate-900 text-white rounded-[2.5rem] p-8 shadow-2xl shadow-brand-900/20 overflow-hidden relative min-h-[400px]">
+                    <div id="day-detail" class="bg-slate-900 text-white rounded-[2.5rem] p-8 shadow-2xl shadow-brand-900/20 overflow-hidden relative min-h-[420px]">
                         <!-- Decoración -->
                         <div class="absolute -right-4 -top-4 w-24 h-24 bg-brand-500/10 rounded-full blur-2xl"></div>
                         
@@ -391,12 +391,19 @@
         function updateDetail(dayIndex) {
             const data = challengeData[dayIndex];
             const isCompleted = completedDays.has(dayIndex);
+            const bibleUrl = `https://www.biblegateway.com/passage/?search=juan%20${data.day}&version=RVR1960`;
             
             detail.innerHTML = `
                 <div class="text-brand-400 font-black uppercase tracking-widest text-xs mb-4 animate-scale-up">Día ${data.day}</div>
-                <h3 class="text-3xl font-black mb-6 animate-scale-up">${data.reading}</h3>
+                <h3 class="text-3xl font-black mb-2 animate-scale-up">${data.reading}</h3>
+                
+                <a href="${bibleUrl}" target="_blank" class="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 text-sm font-bold mb-6 animate-scale-up transition-colors group">
+                    <i data-lucide="external-link" class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                    Leer en BibleGateway
+                </a>
+
                 <p class="text-slate-400 leading-relaxed mb-8 font-light italic serif-font animate-scale-up">
-                    "El que cree en el Hijo tiene vida eterna; pero el que rehúsa creer en el Hijo no verá la vida, sino que la ira de Dios está sobre él." - Juan 3:36
+                    "Escudriñad las Escrituras; porque a vosotros os parece que en ellas tenéis la vida eterna; y ellas son las que dan testimonio de mí." - Juan 5:39
                 </p>
                 <div class="p-6 bg-white/5 rounded-2xl border border-white/10 mb-8 animate-scale-up">
                     <p class="text-xs font-bold text-brand-300 uppercase mb-2 tracking-widest">Tip de estudio</p>
@@ -406,6 +413,7 @@
                     ${isCompleted ? '¡Capítulo Leído!' : 'Marcar como Leído'}
                 </button>
             `;
+            lucide.createIcons();
         }
 
         function toggleDay(index) {
