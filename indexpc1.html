@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perdiendo el Control | Recupera el Timón</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;800&family=Poppins:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        title: ['Anton', 'sans-serif'],
+                        subtitle: ['Montserrat', 'sans-serif'],
+                        body: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B1020',      // Negro azulado
+                            blue: '#10182F',      // Azul oscuro
+                            orange: '#F97316',    // Naranja
+                            gold: '#FACC15',      // Amarillo dorado
+                            light: '#F3F4F6',     // Gris claro
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(249, 115, 22, 0.2);
+        }
+    </style>
+</head>
+<body class="font-body antialiased overflow-x-hidden bg-brand-dark text-white">
+
+    <!-- PÁGINA 1: PORTADA -->
+    <section class="relative min-h-screen flex items-center justify-center pt-10 pb-20 overflow-hidden bg-brand-dark">
+        <!-- Video de fondo -->
+        <div class="absolute inset-0 z-0">
+            <video id="bg-video" autoplay loop muted playsinline class="w-full h-full object-cover object-center opacity-75">
+                <source src="fondo_1.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/20 via-brand-dark/70 to-brand-dark"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center mt-12 fade-in-up">
+            <h1 class="font-title text-6xl md:text-8xl xl:text-9xl tracking-wide text-white leading-none mb-2">
+                PERDIENDO<br>
+                <span class="text-white">EL CONTROL</span>
+            </h1>
+            <h2 class="font-subtitle font-extrabold text-xl md:text-3xl text-brand-orange uppercase tracking-widest mb-6">
+                Recupera el timón de tu voluntad
+            </h2>
+            <p class="text-brand-light/80 text-sm md:text-base max-w-xl mx-auto mb-10">
+                Seminario motivacional y espiritual para jóvenes profesionales, empresarios y emprendedores.
+            </p>
+            
+            <div class="border-l-4 border-brand-orange bg-brand-blue/60 backdrop-blur-sm p-6 max-w-2xl mx-auto mb-12 rounded-r-lg text-left shadow-lg">
+                <p class="font-subtitle font-extrabold text-lg md:text-xl text-white mb-2">"No todo el que avanza tiene dirección.</p>
+                <p class="font-subtitle font-extrabold text-lg md:text-xl text-brand-gold">No todo el que produce está en control."</p>
+            </div>
+
+            <a href="#registro" class="inline-block bg-brand-orange text-white font-subtitle font-extrabold uppercase px-8 py-4 rounded hover:bg-orange-600 transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(249,115,22,0.4)]">
+                QUIERO PARTICIPAR
+            </a>
+        </div>
+        
+        <!-- Flecha de Scroll -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="text-brand-orange w-8 h-8"></i>
+        </div>
+    </section>
+
+    <!-- PÁGINA 2: PROBLEMA CENTRAL (Fondo Claro) -->
+    <section class="py-24 bg-brand-light text-brand-dark relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row fade-in-up">
+                <div class="lg:w-1/2 relative min-h-[300px]">
+                    <img src="portada.jpg" alt="Problema Central" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                    <div class="absolute inset-0 bg-brand-dark/20"></div>
+                </div>
+                <div class="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                    <h2 class="font-title text-4xl md:text-5xl mb-6 text-brand-blue leading-tight">
+                        ¿Estás avanzando o solo sobreviviendo?
+                    </h2>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        Vivimos ocupados, conectados, produciendo, respondiendo mensajes, cumpliendo metas y tomando decisiones. Pero muchas veces, mientras todo parece avanzar por fuera, por dentro algo se está apagando.
+                    </p>
+                    <div class="bg-orange-50 p-6 rounded-lg border-l-4 border-brand-orange">
+                        <p class="font-subtitle font-extrabold text-brand-orange text-lg">Este proceso no es una invitación a hacer más.</p>
+                        <p class="font-subtitle font-extrabold text-brand-blue text-lg">Es una invitación a recuperar el control interior.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA 3: TEMA 1 -->
+    <section class="py-24 bg-brand-dark relative overflow-hidden">
+        <!-- Número gigante de fondo -->
+        <div class="absolute top-10 right-0 font-title text-[20rem] text-outline leading-none select-none z-0">01</div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-12 items-center fade-in-up">
+            <div class="lg:w-1/2 order-2 lg:order-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-title text-5xl text-brand-orange">01</span>
+                    <h2 class="font-title text-4xl md:text-5xl uppercase leading-none">Todo lo que nunca fuimos</h2>
+                </div>
+                <h3 class="font-subtitle font-extrabold text-xl md:text-2xl text-brand-gold mb-6">La abulia: cuando algo se apagó por dentro.</h3>
+                
+                <p class="italic text-brand-light/80 text-xl mb-6 border-l-2 border-brand-light/30 pl-4">
+                    "No es que no quiera, es que no tengo fuerza interior."
+                </p>
+                
+                <p class="text-brand-light mb-4">
+                    No todo cansancio se quita durmiendo; a veces es el alma la que necesita recuperar su dirección. No es que no quieras, es que te falta energía. Ven y da el primer paso hacia tu restauración.
+                </p>
+
+                <p class="text-brand-light mb-6">
+                    Un espacio para reconocer el desánimo, el bloqueo interior y la pérdida de impulso que impiden avanzar, aunque exista claridad sobre lo que se debe hacer.
+                </p>
+
+                <div class="inline-flex items-center gap-2 bg-brand-orange/20 text-brand-orange px-4 py-2 rounded-full font-bold text-sm mb-8 border border-brand-orange/30">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Miércoles 3 de Junio</span>
+                </div>
+                
+                <div class="bg-brand-blue p-5 rounded-lg flex items-start gap-4 border border-slate-700">
+                    <i data-lucide="check-circle-2" class="text-brand-orange w-6 h-6 shrink-0 mt-1"></i>
+                    <div>
+                        <span class="font-bold text-white block mb-1">Acción:</span>
+                        <span class="text-brand-light text-sm">Identifica qué te detuvo y da un primer paso concreto.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 order-1 lg:order-2 w-full max-w-sm mx-auto">
+                <img src="Ciclo_1_.jpg" alt="Tema 1" class="rounded-xl shadow-2xl border border-slate-800 w-full object-cover aspect-[9/16]" onerror="this.src='https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA 4: TEMA 2 (Fondo Claro) -->
+    <section class="py-24 bg-brand-light text-brand-dark relative overflow-hidden">
+        <!-- Número gigante de fondo -->
+        <div class="absolute top-10 left-0 font-title text-[20rem] text-slate-200 leading-none select-none z-0">02</div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-12 items-center fade-in-up">
+            <div class="lg:w-1/2 w-full max-w-sm mx-auto">
+                <img src="Ciclo_2.jpg" alt="Tema 2" class="rounded-xl shadow-2xl border border-gray-200 w-full object-cover aspect-[9/16]" onerror="this.src='https://images.unsplash.com/photo-1506784926709-22f1ec395907?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="lg:w-1/2">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-title text-5xl text-brand-orange">02</span>
+                    <h2 class="font-title text-4xl md:text-5xl uppercase leading-none text-brand-blue">Mañana, y mañana…<br>y mañana</h2>
+                </div>
+                <h3 class="font-subtitle font-extrabold text-xl md:text-2xl text-brand-orange mb-6">La procrastinación: cuando lo importante siempre espera.</h3>
+                
+                <p class="italic text-gray-600 text-xl mb-6 border-l-2 border-gray-300 pl-4">
+                    "La voluntad debilitada por la evasión."
+                </p>
+                
+                <p class="text-gray-700 mb-4">
+                    Una confrontación directa con el hábito de postergar lo esencial, llenar la agenda de urgencias y dejar para después las decisiones que pueden cambiar el rumbo.
+                </p>
+
+                <p class="text-gray-700 mb-6">
+                    Estar siempre ocupado no significa avanzar; a veces la vida sigue corriendo mientras lo verdaderamente esencial se queda en pausa. No te faltan ganas ni capacidad, pero tu voluntad se debilitó esperando el 'momento perfecto'. Ven, deja el 'mañana' atrás y descubre cómo pasar de la intención a la acción hoy.
+                </p>
+
+                <div class="inline-flex items-center gap-2 bg-brand-orange/10 text-brand-orange px-4 py-2 rounded-full font-bold text-sm mb-8 border border-brand-orange/20">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Miércoles 10 de Junio</span>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg flex items-start gap-4 border border-gray-200 shadow-sm">
+                    <i data-lucide="clock" class="text-brand-orange w-6 h-6 shrink-0 mt-1"></i>
+                    <div>
+                        <span class="font-bold text-brand-blue block mb-1">Acción:</span>
+                        <span class="text-gray-600 text-sm">No esperes el momento perfecto. Decide empezar hoy.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA 5: TEMA 3 -->
+    <section class="py-24 bg-brand-dark relative overflow-hidden">
+        <!-- Número gigante de fondo -->
+        <div class="absolute top-10 right-0 font-title text-[20rem] text-outline leading-none select-none z-0">03</div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-12 items-center fade-in-up">
+            <div class="lg:w-1/2 order-2 lg:order-1">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-title text-5xl text-brand-orange">03</span>
+                    <h2 class="font-title text-4xl md:text-5xl uppercase leading-none">Crónica de una muerte anunciada</h2>
+                </div>
+                <h3 class="font-subtitle font-extrabold text-xl md:text-2xl text-brand-gold mb-6">Adicciones: cuando el deseo gobierna la decisión.</h3>
+                
+                <p class="italic text-brand-light/80 text-xl mb-6 border-l-2 border-brand-light/30 pl-4">
+                    "Mi deseo es más fuerte que mi decisión."
+                </p>
+                
+                <p class="text-brand-light mb-4">
+                    ¿Cuántas veces te has dicho 'esta es la última vez' y descubres que tu deseo sigue siendo más fuerte que tu decisión? Funcionar bien por fuera no siempre significa ser libre por dentro. Ven y descubre cómo recuperar el gobierno de tu vida cuando tus propias fuerzas ya no son suficientes.
+                </p>
+
+                <p class="text-brand-light mb-6">
+                    Una mirada honesta a las dependencias visibles e invisibles: redes, trabajo excesivo, validación, placer, distracciones, hábitos y conductas que terminan tomando el control.
+                </p>
+
+                <div class="inline-flex items-center gap-2 bg-brand-orange/20 text-brand-orange px-4 py-2 rounded-full font-bold text-sm mb-8 border border-brand-orange/30">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Miércoles 17 de Junio</span>
+                </div>
+                
+                <div class="bg-brand-blue p-5 rounded-lg flex items-start gap-4 border border-slate-700">
+                    <i data-lucide="link-2-off" class="text-brand-orange w-6 h-6 shrink-0 mt-1"></i>
+                    <div>
+                        <span class="font-bold text-white block mb-1">Acción:</span>
+                        <span class="text-brand-light text-sm">Reconoce qué te domina y toma distancia de lo que te debilita.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 order-1 lg:order-2 w-full max-w-sm mx-auto">
+                <img src="Ciclo_3.jpg" alt="Tema 3" class="rounded-xl shadow-2xl border border-slate-800 w-full object-cover aspect-[9/16]" onerror="this.src='https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA 6: TEMA FINAL (Fondo Claro) -->
+    <section class="py-24 bg-brand-light text-brand-dark relative overflow-hidden">
+        <!-- Número gigante de fondo -->
+        <div class="absolute top-10 left-0 font-title text-[20rem] text-slate-200 leading-none select-none z-0">04</div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-12 items-center fade-in-up">
+            <div class="lg:w-1/2 w-full max-w-sm mx-auto">
+                <img src="Ciclo_4.jpg" alt="Tema Final" class="rounded-xl shadow-2xl border border-gray-200 w-full object-cover aspect-[9/16]" onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+            </div>
+            <div class="lg:w-1/2">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-title text-5xl text-brand-orange">04</span>
+                    <h2 class="font-title text-4xl md:text-5xl uppercase leading-none text-brand-blue">Voluntad Firme</h2>
+                </div>
+                <h3 class="font-subtitle font-extrabold text-xl md:text-2xl text-brand-orange mb-6">Cómo recuperar dirección en un mundo profesional.</h3>
+                
+                <p class="italic text-gray-600 text-xl mb-6 border-l-2 border-gray-300 pl-4">
+                    "Recupera el timón de tu vida interior."
+                </p>
+                
+                <p class="text-gray-700 mb-6">
+                    El cierre del proceso: volver al centro correcto, ordenar prioridades y permitir que Dios restaure la dirección, la estabilidad y el propósito.
+                </p>
+
+                <div class="inline-flex items-center gap-2 bg-brand-orange/10 text-brand-orange px-4 py-2 rounded-full font-bold text-sm mb-8 border border-brand-orange/20">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Miércoles 24 de Junio</span>
+                </div>
+                
+                <div class="bg-brand-blue text-white p-6 rounded-lg shadow-lg">
+                    <p class="font-subtitle font-extrabold text-xl text-center">¿Quién está tomando el timón de tu vida interior?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA 7: PARA QUIÉN ES (Fondo Claro continuo) -->
+    <section class="py-20 bg-white text-brand-dark border-t border-gray-200 relative">
+        <div class="max-w-5xl mx-auto px-6 fade-in-up">
+            <h2 class="font-title text-4xl md:text-5xl text-center text-brand-blue mb-12 uppercase">
+                Este proceso es para ti si…
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Card 1 -->
+                <div class="bg-brand-light p-6 rounded-xl border border-gray-200 flex flex-col items-center text-center hover:border-brand-orange transition-colors">
+                    <div class="bg-brand-orange/10 p-4 rounded-full mb-4">
+                        <i data-lucide="battery-low" class="text-brand-orange w-8 h-8"></i>
+                    </div>
+                    <p class="font-semibold text-brand-blue">Sientes que has perdido impulso.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-brand-light p-6 rounded-xl border border-gray-200 flex flex-col items-center text-center hover:border-brand-orange transition-colors">
+                    <div class="bg-brand-orange/10 p-4 rounded-full mb-4">
+                        <i data-lucide="list-x" class="text-brand-orange w-8 h-8"></i>
+                    </div>
+                    <p class="font-semibold text-brand-blue">Te cuesta ejecutar lo que sabes que debes hacer.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-brand-light p-6 rounded-xl border border-gray-200 flex flex-col items-center text-center hover:border-brand-orange transition-colors">
+                    <div class="bg-brand-orange/10 p-4 rounded-full mb-4">
+                        <i data-lucide="calendar-off" class="text-brand-orange w-8 h-8"></i>
+                    </div>
+                    <p class="font-semibold text-brand-blue">Has postergado decisiones importantes.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-brand-light p-6 rounded-xl border border-gray-200 flex flex-col items-center text-center hover:border-brand-orange transition-colors">
+                    <div class="bg-brand-orange/10 p-4 rounded-full mb-4">
+                        <i data-lucide="gamepad-2" class="text-brand-orange w-8 h-8"></i>
+                    </div>
+                    <p class="font-semibold text-brand-blue">Hay hábitos o deseos que te dominan.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-brand-light p-6 rounded-xl border border-gray-200 flex flex-col items-center text-center hover:border-brand-orange transition-colors">
+                    <div class="bg-brand-orange/10 p-4 rounded-full mb-4">
+                        <i data-lucide="sun" class="text-brand-orange w-8 h-8"></i>
+                    </div>
+                    <p class="font-semibold text-brand-blue">Quieres fortalecer tu voluntad con Dios.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-brand-light p-6 rounded-xl border border-gray-200 flex flex-col items-center text-center hover:border-brand-orange transition-colors">
+                    <div class="bg-brand-orange/10 p-4 rounded-full mb-4">
+                        <i data-lucide="compass" class="text-brand-orange w-8 h-8"></i>
+                    </div>
+                    <p class="font-semibold text-brand-blue">Deseas vivir tu profesión, empresa o liderazgo con dirección.</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <p class="font-subtitle font-extrabold text-2xl text-brand-orange mb-1">No se trata de hacer más.</p>
+                <p class="font-subtitle font-extrabold text-2xl text-brand-blue">Se trata de volver a tener dirección.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA 8: CIERRE / CALL TO ACTION -->
+    <section id="registro" class="py-24 bg-brand-dark border-t border-slate-800 relative">
+        <!-- Elemento de diseño de fondo -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-5xl mx-auto px-6 relative z-10 flex flex-col md:flex-row gap-12 fade-in-up">
+            
+            <div class="md:w-1/2">
+                <h2 class="font-title text-6xl md:text-7xl text-white uppercase leading-none mb-4">
+                    NO NAVEGUES<br><span class="text-brand-orange">SOLO</span>
+                </h2>
+                <h3 class="font-subtitle font-extrabold text-xl text-brand-gold mb-6 uppercase tracking-widest">
+                    Recupera el timón.<br>Vuelve a vivir con dirección.
+                </h3>
+                <p class="text-brand-light/80 mb-8 text-lg">
+                    Una voluntad firme no nace solo de la disciplina externa. Se fortalece cuando el corazón vuelve al lugar correcto y Dios ocupa el centro de las decisiones.
+                </p>
+                
+                <!-- Datos del evento -->
+                <div class="bg-brand-blue/50 p-6 rounded-xl border border-slate-700 space-y-4 mb-8 md:mb-0">
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="calendar" class="text-brand-orange w-5 h-5 mt-1"></i>
+                        <div>
+                            <p><strong class="text-white block mb-1">Fechas:</strong></p>
+                            <ul class="text-brand-light/70 space-y-1 text-sm list-disc pl-4">
+                                <li>Ciclo 1: Miércoles 3 de Junio</li>
+                                <li>Ciclo 2: Miércoles 10 de Junio</li>
+                                <li>Ciclo 3: Miércoles 17 de Junio</li>
+                                <li>Ciclo 4: Miércoles 24 de Junio</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="clock" class="text-brand-orange w-5 h-5"></i>
+                        <p><strong class="text-white">Hora:</strong> <span class="text-brand-light/70">7:00 PM (Todos los ciclos)</span></p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="map-pin" class="text-brand-orange w-5 h-5"></i>
+                        <p><strong class="text-white">Dirección:</strong> <span class="text-brand-light/70">CALLE 26 AN 7C - 27</span></p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="smartphone" class="text-brand-orange w-5 h-5"></i>
+                        <p><strong class="text-white">Informes:</strong> <span class="text-brand-light/70">301 368 0420</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario Simple / Reserva -->
+            <div class="md:w-1/2 flex flex-col justify-center">
+                <div class="bg-white rounded-2xl p-8 shadow-xl text-brand-dark text-center border-t-4 border-brand-orange">
+                    <i data-lucide="clipboard-signature" class="w-12 h-12 text-brand-orange mx-auto mb-4"></i>
+                    <h4 class="font-subtitle font-extrabold text-2xl text-brand-blue mb-3">Asegura tu lugar hoy</h4>
+                    <p class="text-gray-500 text-sm mb-8">
+                        Haz clic en el siguiente botón para completar tu registro oficial en nuestro formulario seguro y reservar tu cupo para los 4 ciclos.
+                    </p>
+                    
+                    <a href="https://forms.gle/ZM1k9FGDwpobyZDW6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 w-full bg-brand-orange text-white font-subtitle font-extrabold uppercase py-4 px-6 rounded hover:bg-orange-600 transition-colors shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+                        IR AL FORMULARIO
+                        <i data-lucide="external-link" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#050810] py-8 text-center border-t border-slate-800">
+        <p class="text-slate-600 text-sm font-semibold tracking-widest">SEMINARIO PERDIENDO EL CONTROL &copy; 2026</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Ajustar velocidad del video de fondo a 75%
+        const bgVideo = document.getElementById('bg-video');
+        if (bgVideo) {
+            bgVideo.playbackRate = 0.75;
+        }
+
+        // Animación Fade-in al hacer scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
