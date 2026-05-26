@@ -62,10 +62,10 @@
     <section class="relative min-h-screen flex items-center justify-center pt-10 pb-20 overflow-hidden bg-brand-dark">
         <!-- Video de fondo -->
         <div class="absolute inset-0 z-0">
-            <video id="bg-video" autoplay loop muted playsinline class="w-full h-full object-cover object-center opacity-30">
+            <video id="bg-video" autoplay loop muted playsinline class="w-full h-full object-cover object-center opacity-75">
                 <source src="fondo_1.mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/80 to-brand-dark"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/20 via-brand-dark/70 to-brand-dark"></div>
         </div>
 
         <div class="relative z-10 max-w-4xl mx-auto px-6 text-center mt-12 fade-in-up">
@@ -415,7 +415,7 @@
 
         document.querySelectorAll('.fade-in-up').forEach((el) => {
             observer.observe(el);
-        });  
+        });
     </script>
 </body>
 </html>
