@@ -76,9 +76,8 @@
             <h2 class="font-subtitle font-extrabold text-xl md:text-3xl text-brand-orange uppercase tracking-widest mb-6">
                 Recupera el timón de tu voluntad
             </h2>
-            <p class="text-brand-light/80 text-sm md:text-base max-w-xl mx-auto mb-10">
-                Seminario motivacional y espiritual para jóvenes profesionales, empresarios y emprendedores.
-            </p>
+            
+            <img src="pec.png" alt="PEC" class="h-16 md:h-24 mx-auto mb-10 object-contain" onerror="this.style.display='none'">
             
             <div class="border-l-4 border-brand-orange bg-brand-blue/60 backdrop-blur-sm p-6 max-w-2xl mx-auto mb-12 rounded-r-lg text-left shadow-lg">
                 <p class="font-subtitle font-extrabold text-lg md:text-xl text-white mb-2">"No todo el que avanza tiene dirección.</p>
@@ -101,7 +100,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row fade-in-up">
                 <div class="lg:w-1/2 relative min-h-[300px]">
-                    <img src="portada.jpg" alt="Problema Central" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
+                    <img src="portada_pc.jpg" alt="Problema Central" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">
                     <div class="absolute inset-0 bg-brand-dark/20"></div>
                 </div>
                 <div class="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
@@ -392,9 +391,15 @@
                         <i data-lucide="clock" class="text-brand-orange w-5 h-5"></i>
                         <p><strong class="text-white">Hora:</strong> <span class="text-brand-light/70">7:00 PM (Todos los ciclos)</span></p>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <i data-lucide="map-pin" class="text-brand-orange w-5 h-5"></i>
-                        <p><strong class="text-white">Dirección:</strong> <span class="text-brand-light/70">CALLE 26 AN 7C - 27</span></p>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="text-brand-orange w-5 h-5 mt-1"></i>
+                        <div>
+                            <p><strong class="text-white block mb-1">Sedes:</strong></p>
+                            <ul class="text-brand-light/70 space-y-1 text-sm list-disc pl-4">
+                                <li><strong class="text-white">Sede Norte:</strong> Calle 26AN # 7C - 27</li>
+                                <li><strong class="text-white">Sede Sur:</strong> Carrera 3 # 8-50</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="flex items-center gap-3">
                         <i data-lucide="smartphone" class="text-brand-orange w-5 h-5"></i>
@@ -408,14 +413,20 @@
                 <div class="bg-white rounded-2xl p-8 shadow-xl text-brand-dark text-center border-t-4 border-brand-orange">
                     <i data-lucide="clipboard-signature" class="w-12 h-12 text-brand-orange mx-auto mb-4"></i>
                     <h4 class="font-subtitle font-extrabold text-2xl text-brand-blue mb-3">Asegura tu lugar hoy</h4>
-                    <p class="text-gray-500 text-sm mb-8">
-                        Haz clic en el siguiente botón para completar tu registro oficial en nuestro formulario seguro y reservar tu cupo para los 4 ciclos.
+                    <p class="text-gray-500 text-sm mb-6">
+                        Elige tu sede y haz clic en el botón correspondiente para completar tu registro oficial en nuestro formulario seguro.
                     </p>
                     
-                    <a href="https://forms.gle/ZM1k9FGDwpobyZDW6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 w-full bg-brand-orange text-white font-subtitle font-extrabold uppercase py-4 px-6 rounded hover:bg-orange-600 transition-colors shadow-[0_0_15px_rgba(249,115,22,0.3)]">
-                        IR AL FORMULARIO
-                        <i data-lucide="external-link" class="w-5 h-5"></i>
-                    </a>
+                    <div class="flex flex-col gap-4 w-full">
+                        <a href="https://forms.gle/ZM1k9FGDwpobyZDW6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 w-full bg-brand-orange text-white font-subtitle font-extrabold uppercase py-4 px-6 rounded hover:bg-orange-600 transition-colors shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+                            Formulario Sede Norte
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSek6CA22UMG4QHDqGoFfd7ERhQ2mHnBNX-huU9iKjdmlIA7FQ/viewform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 w-full bg-brand-orange text-white font-subtitle font-extrabold uppercase py-4 px-6 rounded hover:bg-orange-600 transition-colors shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+                            Formulario Sede Sur
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
